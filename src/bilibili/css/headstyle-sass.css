@@ -1,0 +1,60 @@
+.bili-header-m {
+    background-position: top center;
+}
+
+.bili-header-m .nav-menu .blur-bg {
+    background-position: top center;
+}
+
+.bili-header-m .bili-wrapper .user-meun .news .i-iframe {
+    position: absolute;
+
+    display: none;
+
+    width: 110px;
+    height: 210px;
+    margin-left: calc(50% - 55px);
+}
+
+.bili-header-m .bili-wrapper .user-meun .member .member-m {
+    position: absolute;
+    top: 42px;
+
+    display: none;
+
+    width: 260px;
+    height: 260px;
+    margin-left: calc(50% - 130px);
+
+    border: 1px solid #212121;
+    background: #fff;
+}
+
+.bili-header-m .bili-wrapper .user-meun .member .member-m .box {
+    padding: 14px;
+}
+
+.bili-header-m .bili-wrapper .user-meun .member .member-m .box .title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+
+    margin: 5px 0 13px;
+
+    color: #212121;
+}
+
+.bili-header-m .bili-wrapper .user-meun .member .member-m .box .title a {
+    font-weight: 400;
+
+    display: block;
+    float: right;
+
+    padding: 0 6px;
+
+    text-align: center;
+
+    color: #666;
+    border: 1px solid #ccd0d7;
+    border-radius: 4px;
+}

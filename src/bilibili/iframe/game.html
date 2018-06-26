@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哔哩哔哩游戏中心</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        a,a:hover{text-decoration:none;}
+        img{border:none;display:block;}
+        ul,li{list-style:none;}
+        .clearfix:after{content:"";display:block;height:0;visibility:hidden;clear:both;}
+        .fl{float:left;}
+        .fr{float:right;}
+        body{font-family:"Microsoft YaHei";font-size:12px;color:#666;}
+        .warp{width:466px;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.5);background-color: #fff;position:relative;}
+        .left{width: 264px;margin-top: 12px;}
+        .left .l-t-img{width: 240px;height:128px;position:relative;margin: 0 auto}
+        .left .l-t-img img{width: 100%;height: 100%;}
+        .left .l-t-img span{height:30px;display:block;width: 220px;padding: 0 10px;position: absolute;bottom:0;left:0;background:url("../img/head-game/shadow.png") repeat-x;color:#fff;line-height: 30px;text-shadow:1px 1px 1px #000;}
+        .left  a.mask{display:block;position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+
+        .left .l-nav{width: 264px;height: 110px;margin-top: 6px;}
+        .left .l-nav .nav-item{float: left;width: 88px;height: 110px;}
+        .left .l-nav .nav-item:hover{background-color:#e5e8ef;}
+        .left .l-nav a {display:block;width: 64px;height: 104px;padding: 6px 12px 0px;}
+        .left .l-nav a img{width: 64px;height: 64px;border-radius:10px;}
+        .left .l-nav a span{display:block;text-align:center;height:20px;line-height: 20px;margin-top: 7px;color:#000;}
+
+        .right{margin-top: 12px;width: 200px;background:url("../img/head-game/title.png") no-repeat;}
+        .right .forum{float: right;height: 28px;line-height: 28px;color:#00a1d6;margin-right: 12px;}
+        .right .all{padding: 36px 0 0 6px;width: 193px;background:url("../img/head-game/line.png") no-repeat;}
+        .right .all a{display:block;height:28px;line-height: 28px;padding-left: 16px;color:#000;}
+        .right .all a:hover{ color: #00a1d6;background-color: #e5e9ef;}
+
+        .imgdiv{width: 220px;height: 220px;position: absolute;bottom: 0;right: -200px;background-repeat: no-repeat;}
+    </style>
+</head>
+<body>
+    <div class="warp clearfix">
+        <div class="left fl">
+            <div class="l-t-img">
+                <img src="../img/head-game/图层 1.png" alt="命运-冠位指定（Fate/GO">
+                <span>命运-冠位指定（Fate/GO）</span>
+                <a href="javascript:;" class="mask"></a>
+            </div>
+            <div class="l-nav clearfix">
+                <ul>
+                    <li class="nav-item">
+                        <a href="javascript:;" title="碧蓝航线" target="_blank">
+                            <img src="../img/head-game/nav01.png" alt="">
+                            <span>碧蓝航线</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:;" title="神代梦华" target="_blank">
+                            <img src="../img/head-game/nav02.jpg" alt="">
+                            <span>神代梦华</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:;" title="永远的7" target="_blank">
+                            <img src="../img/head-game/nav03.jpg" alt="">
+                            <span>永远的7</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right fr">
+            <a class="forum" href="javascript:;">游戏论坛</a>
+            <div class="all">
+                <a href="javascript:;" data-img="../img/head-game/data-img01.png">BanG Dream！</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img02.png">A3!满开剧团</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img03.png">桃源乡</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img04.png">无法触碰的掌心</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img05.png">一血万杰</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img06.png">妃十三学园</a>
+                <a href="javascript:;" data-img="../img/head-game/data-img07.png">RWBY</a>
+            </div>
+        </div>
+        <div class="imgdiv"></div>
+    </div>
+    <script type="text/javascript">
+        var EventUtil={
+            addListener:function(element,type,handler){
+                if(element.addEventListener){
+                    element.addEventListener(type, handler, false);
+                }else if(element.attachEvent){
+                    element.attachEvent('on'+type,function(){
+                        handler.call(element);
+                    });
+                }else{
+                    element['on'+type]=handler;
+                }
+            }
+        }
+           var imgDiv=document.querySelector('.imgdiv');
+            var allA=document.querySelectorAll('.all > a');
+            for(var i=0,len=allA.length;i<len;i++){
+                EventUtil.addListener(allA[i],'mouseenter',overimg);
+                EventUtil.addListener(allA[i],'mouseouter',outimg)
+            }
+            function overimg(){
+                var img=this.getAttribute('data-img');
+                imgDiv.style.backgroundImage='url("'+img+'")';
+            }
+            function outimg(){
+                imgDiv.style.backgroundImage = '';
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>图片立体旋转</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;background: #000;}
+            #warp{width: 800px;height: 360px;margin: 100px auto;box-shadow: 0 0 5px #fff;perspective: 1000px;}
+            #warp #list{width: 100%;height: 100%;position: relative;}
+            #warp #list li{width: 40px;height: 360px;position: absolute;transform-style: preserve-3d;transform-origin: center center -180px;}
+            /*#warp #list li:hover{transform:rotateX(360deg);transition: 2s}*/
+            #warp #list li a{width: 40px;height: 360px;display: block;position: absolute;}
+            #warp #list li a.a1{background: url(img/11.jpg) no-repeat;}
+            #warp #list li a.a2{background: url(img/22.jpg) no-repeat;top:-100%;transform-origin: bottom;transform:rotateX(90deg);}
+            #warp #list li a.a3{background: url(img/33.jpg) no-repeat;transform: translateZ(-360px) rotateX(180deg);}
+            #warp #list li a.a4{background: url(img/44.jpg) no-repeat;top:100%;transform-origin: top;transform:rotateX(-90deg);}
+            #warp #list li span{width: 360px;height: 360px;display: block;position: absolute;background:rgba(255,255,255,.5);}
+            #warp #list li span.span1{transform-origin: left;transform:rotateY(90deg);}
+            #warp #list li span.span2{left: 40px;transform-origin: left;transform:rotateY(90deg);}
+
+            #warp #btn{width: 200px;margin: 80px auto;height: 40px;}
+
+            #warp #btn li{width: 40px;height: 40px;background: #77B96B;color: #fff;border-radius: 50%;text-align: center;line-height: 40px;float: left;font-weight: bold;margin: 0 5px;font-size: 14px;cursor: pointer;}
+            #warp #btn li.on{background: #FC9500;}
+
+        </style>
+        <script type="text/javascript" src=""></script>
+    </head>
+<body>
+    <div id="warp">
+        <ul id="list">
+            <!-- <li>
+                <a class="a1" href="javascript:;" style="background-position:0px 0;"></a>
+                <a class="a2" href="javascript:;"></a>
+                <a class="a3" href="javascript:;"></a>
+                <a class="a4" href="javascript:;"></a>
+                <span class="span1"></span>
+                <span class="span2"></span>
+            </li> -->
+
+        </ul>
+        <ul id="btn">
+            <li class="on">1</li> <li>2</li> <li>3</li> <li>4</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+
+    /*
+        问题:position点位层级关系  父级元素:transform-style:preserve-3d
+    */
+        window.onload=function(){
+            var oList=document.getElementById("list");
+            var liWid=40;
+            var liNum=oList.clientWidth/liWid;
+
+            var aBtn=document.getElementById("btn").children;
+
+            //init  添加li
+            (function(){
+                var html=""
+                var zIndex=0;
+                for(var i=0;i<liNum;i++){
+                    i<Math.floor(liNum/2)?zIndex++:zIndex--;
+                    var aStr=""
+                    for(var j=0;j<4;j++){
+                        aStr+=' <a class="a'+(j+1)+'" href="javascript:;" style="background-position:'+(-liWid*i)+'px 0;"></a> ';
+                    }
+                    html+='<li style="z-index:'+zIndex+'; left:'+liWid*i+'px;">'+aStr+'</li>'
+                }
+                oList.innerHTML=html;
+            })();
+
+
+            var aLi=oList.children;
+            var picIndex=0
+
+            //btn 点击相关事件.动画
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index=i;
+                aBtn[i].onclick=function(){
+                    aBtn[picIndex].className="";
+                    picIndex=this.index;
+                    this.className="on";
+                    for(var k=0;k<aLi.length;k++){
+                        console.log(k);
+                        aLi[k].style.transform="rotateX("+(90*picIndex)+"deg)";
+                        aLi[k].style.transition=" 0.8s "+(50*k)+"ms";
+                    }
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

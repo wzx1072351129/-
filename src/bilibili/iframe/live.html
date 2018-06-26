@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直播</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        a,a:hover{text-decoration:none;}
+        ul,li{list-style:none;}
+        img{border:none;display:block;}
+        body{font-family:"Microsoft Yahei";font-size:12px;}
+        .clearfix:after{content:"";display:block;clear:both;height:0;}
+        .fl{float:left;}
+        .fr{float:right;}
+
+        .box{width: 524px;height: 225px;background-color: #fff;padding:20px 0;box-shadow:1px 1px 3px rgba(0,0,0,.4);border-radius:5px;}
+        .title{line-height: 14px;padding-left: 10px;color:#ea759f;font-size:14px;height: 14px;margin-bottom: 7px;}
+        .left{width: 256px;margin-left: 10px;}
+        .left .userhead {border-right:1px solid #eaeaea;}
+        .left .userhead a{display:block;width: 65px;height: 92px;padding:10px 10px 0;float: left;position: relative;color:#000;}
+        .left .userhead a img{width: 64px;height: 64px;border-radius:50%;}
+        .left .userhead a i.mask{width: 64px;height: 64px;display: none;background-color: rgba(0,0,0,.5);position: absolute;top: 10px ;left: 10px;border-radius:50%;font-weight:700;line-height: 64px;text-indent:22px;color:#fff;font-style:normal;font-size:16px;animation:scale-in-ease linear .5s;}
+        .left .userhead a:hover i.mask{display:block;}
+        .left .userhead a i.mask:after{content:"";display: block;position: absolute;top: 27px;left: 8px;width: 12px;height: 12px;border-radius:50%;background-color:#ff699e ;}
+        .left .userhead a p{text-align:center;margin-top: 10px;height: 12px;line-height: 12px;text-overflow:ellipsis;white-space:nowrap;overflow: hidden}
+
+        .right{width: 250px;}
+        .right .banner a{display:block;width: 208px;height: 80px;padding:10px 21px;}
+        .right .banner img{width: 208px;height: 80px;}
+        @keyframes scale-in-ease{
+            0%{opacity:0;-webkit-transform:scale(0);transform:scale(0);}
+            50%{-webkit-transform:scale(1);transform:scale(1);}
+            100%{opacity:1;-webkit-transform:scale(1);transform:scale(1);}
+        }
+
+        @-wedkit-keyframes scale-in-ease{
+            0%{opacity:0;-webkit-transform:scale(0);transform:scale(0);}
+            50%{-webkit-transform:scale(1);transform:scale(1);}
+            100%{opacity:1;-webkit-transform:scale(1);transform:scale(1);}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box clearfix">
+        <div class="left fl">
+            <p class="title">热门直播</p>
+            <div class="userhead clearfix">
+               <a href="javascript:;">
+                   <img src="../img/live/01.jpg" alt="">
+                   <i class="mask">live</i>
+                   <p>轻十月</p>
+               </a>
+               <a href="javascript:;">
+                   <img src="../img/live/02.jpg" alt="">
+                   <i class="mask">live</i>
+                   <p>瓶子君152</p>
+               </a>
+               <a href="javascript:;">
+                   <img src="../img/live/03.jpg" alt="">
+                   <i class="mask">live</i>
+                   <p>裕刺Fy</p>
+               </a>
+               <a href="javascript:;">
+                   <img src="../img/live/04.jpg" alt="">
+                   <i class="mask">live</i>
+                   <p>毕竟是无敌柚</p>
+               </a>
+               <a href="javascript:;">
+                   <img src="../img/live/05.gif" alt="">
+                   <i class="mask">live</i>
+                   <p>iPanda熊猫频道</p>
+               </a>
+               <a href="javascript:;">
+                   <img src="../img/live/06.jpg" alt="">
+                   <i class="mask">live</i>
+                   <p>红发杰克丶</p>
+               </a>
+            </div>
+        </div>
+        <div class="right fr">
+             <p class="title">热门活动 </p>
+             <div class="banner">
+                 <a href="javascript:;"><img src="../img/live/banner01.jpg" alt=""></a>
+                 <a href="javascript:;"><img src="../img/live/banner02.jpg" alt=""></a>
+             </div>
+        </div>
+    </div>
+</body>
+</html>

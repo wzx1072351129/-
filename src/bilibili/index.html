@@ -1,0 +1,1073 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+<head>
+    <!--中文编码 GBK GB2312  国际编码UTF-8-->
+    <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+    <!--声明当前页面的三要素-->
+    <meta name="Keywords" content="关键字，关键词">
+    <meta name="Description" content="描述和简介">
+    <title>哔哩哔哩(仿)</title>
+    <style type="text/css">
+        /* web自带样式初始化 */
+        *{margin:0px;padding:0px;}
+        ol,ul{list-style:none;}
+        a{text-decoration:none;}
+        img{border:none;}
+
+        body{font-size:12px;font-family:"Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;color:#666;}
+
+    </style>
+    <!-- <link rel="stylesheet" href="css/headstyle.css"> -->
+    <!-- <link rel="stylesheet" href="css/headstyle-sass.css"> -->
+    <link rel="stylesheet" href="css/style01.css">
+    <link rel="stylesheet" href="css/templale_list_nav.css">
+    <link rel="stylesheet" href="css/headstyle-less.css">
+    <link rel="stylesheet" href="css/bodystyle-less.css">
+    <link rel="stylesheet" href="css/side-less.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部 start -->
+        <div class="bili-header-m">
+            <div class="nav-menu">
+                <!-- head 模糊背景 -->
+                <div class="blur-bg"></div>
+                <!-- 白色遮罩 -->
+                <div class="nav-mask"></div>
+                <!-- 1160整体 start-->
+                <div class="bili-wrapper clearfix warp-box">
+                    <!-- 左侧菜单 start-->
+                    <div class="nav-con fl">
+                        <ul>
+                            <li class="nav-item home">
+                                <a href="javascript:;" title="">
+                                    <i class="bi-icon"></i>主站
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:;" target="blank" title="画友">画友</a>
+                            </li>
+                            <li class="nav-item game">
+                                <a href="javascript:;" target="blank" title="游戏中心">游戏中心</a>
+                                <div class="i-iframe nav-box jsSel-h-showBox">
+                                    <iframe src="iframe/game.html" frameborder="0" style="width:100%;height:100%; "></iframe>
+                                </div>
+                            </li>
+                            <li class="nav-item live">
+                                <a href="javascript:;" target="blank" title="直播">直播</a>
+                                <div class="i-iframe nav-box jsSel-h-showBox">
+                                    <iframe src="iframe/live.html" frameborder="0" style="width:100%;height:100%;"></iframe>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:;" target="blank" title="会员购">会员购</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:;" target="blank" title="周边">周边</a>
+                            </li>
+                            <li class="nav-item mobile">
+                                <a href="javascript:;" target="blank" title="移动端">移动端</a>
+                                <div class="app-orcode-box nav-box jsSel-h-showBox">
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end 左侧菜单 -->
+                    <!-- 右侧投稿 start -->
+                    <div class="up-load fr">
+                        <a href="javascript:;" target="_blank" class="u-link">投 稿</a>
+                        <div class="up-nav nav-box jsSel-h-showBox">
+                            <ul>
+                                <li><a href="javascript:;"><i class="bi-icon rect zl"></i><span>专栏投稿</span></a></li>
+                                <li><a href="javascript:;"><i class="bi-icon rect yy"></i><span>音乐投稿</span></a></li>
+                                <li><a href="javascript:;"><i class="bi-icon rect sp"></i><span>视频投稿</span></a></li>
+                                <li><a href="javascript:;"><i class="bi-icon rect gl"></i><span>投稿管理</span></a></li>
+                                <li><a href="javascript:;"><i class="bi-icon rect cz"></i><span>创作中心</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end 右侧投稿 -->
+                    <!-- 右侧历史用户信息 start-->
+                    <div class="nav-con fr user-meun">
+                        <ul>
+                            <li class="nav-item profile-info">
+                                <a href="javascript:;">
+                                    <img src="img/akari.jpg" alt="">
+                                </a>
+                            </li>
+                            <!-- 大会员 start -->
+                            <li class="nav-item member">
+                                 <a href="javascript:;">大会员</a>
+                                 <div class="member-m jsSel-h-showBox">
+                                     <div class="box">
+                                         <div class="title">精彩推荐<a href="javascript:;">更多 ></a></div>
+                                         <div class="con">
+                                             <div class="part">
+                                                 <img src="" alt="">
+                                                 <p></p>
+                                             </div>
+                                             <div class="part">
+                                                 <img src="" alt="">
+                                                 <p></p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                            </li>
+                            <!-- end 大会员 -->
+                            <!-- 消息 start -->
+                            <li class="nav-item news">
+                                 <a href="javascript:;">消息</a>
+                                 <div class="i-iframe jsSel-h-showBox">
+                                      <iframe src="iframe/news.html" frameborder="0" style="width:100%;height:100%;"></iframe>
+                                 </div>
+                            </li>
+                            <!-- end 消息-->
+                            <!-- 动态 start -->
+                            <li class="nav-item">
+                                <a href="javascript:;">动态</a>
+                                <div class="dynamic-m jsSel-h-showBox">
+                                    <div class="dyn-meun">
+                                        <div class="meun">
+                                            <ul>
+                                                <li class="on" data-type="video">视频</li>
+                                                <li data-type="live">直播</li>
+                                                <li data-type="special">专栏</li>
+                                            </ul>
+                                        <div class="line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="dyn-list-warpper">
+                                       <!--  <ul class="dyn-list">
+                                            <li class="no-data">
+                                                暂时没有新动态了哦！
+                                            </li>
+                                            <li class="d-data history">
+                                                <div class="history-tag"> 历史动态 </div>
+                                            </li>
+                                            <span>
+                                                <li class="d-data">
+                                                    <div class="preview">
+                                                        <a href="javascript:;"><img src="img/dynamic/dyn01.webp" alt=""></a>
+                                                    </div>
+                                                    <div class="con">
+                                                        <div class="title">
+                                                            <span class="sp">番剧</span>
+                                                            <a href="javascritp:;">紫罗兰永恒花园</a>
+                                                            <span>已投稿</span>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="javascript:;">7</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </span>
+                                        </ul> -->
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="javascript:;">查看更多</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- end 动态 -->
+                            <!-- 稍后观看start -->
+                            <li class="nav-item">
+                                <a href="javascript:;">稍后观看</a>
+                                <div class="mini-mnd-nav later-wnd jsSel-h-showBox">
+                                     <ul class="list history">
+                                        <div>
+                                            <li class="no-data">列表中空空如也，赶紧去添加几个吧~</li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- end稍后观看 -->
+                            <!-- 收藏夹start -->
+                            <li class="nav-item">
+                                <a href="javascript:;">收藏夹</a>
+                                <div class="mini-mnd-nav favorite-wnd jsSel-h-showBox">
+                                    <!--  <ul class="list history">
+                                        <div>
+                                            <li>
+                                                <div class="link favor-link">把博多豚骨拉面的OP倒放一下居然还挺好听的</div>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                    <div class="read-more">
+                                       查看更多<i class="bi-icon b-icon-arrow-r"></i>
+                                    </div> -->
+                                </div>
+                            </li>
+                            <!-- end收藏夹 -->
+                            <!-- 历史记录 start-->
+                            <li class="nav-item">
+                                <a href="javascript:;" >历史</a>
+                                <!-- 列表详细 start-->
+                                <div class="mini-mnd-nav history-wnd jsSel-h-showBox">
+                                    <!-- *********** js 生成 -->
+                                    <!-- <ul class="list history">
+                                        <div>
+                                            <li class="timeline">
+                                                <span class="date">近一周</span>
+                                            </li>
+                                            <li>
+                                                <div class="link">把博多豚骨拉面的OP倒放一下居然还挺好听的 </div>
+                                                <div class="state fr">
+                                                    <span class="progress">1%</span>
+                                                    <i class="device phone"></i>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                    <div class="read-more">
+                                       查看更多<i class="bi-icon b-icon-arrow-r"></i>
+                                    </div> -->
+                                    <!-- ************** -->
+                                </div>
+                                <!-- end 列表详细 -->
+                            </li>
+                            <!-- end 历史记录 -->
+                        </ul>
+                    </div>
+                    <!-- end右侧历史用户信息 -->
+                </div>
+            </div>
+            <!-- 搜索start -->
+            <div class="nav-search warp-box">
+                <div class="s-box">
+                    <a class="ranking" href="javascript:;">排行榜</a>
+                    <div class="nav-in" >
+                        <input type="text" placeholder="夏天要不要来蹦迪？">
+                        <i></i>
+                    </div>
+                </div>
+            </div>
+            <!-- end 搜索 -->
+
+            <!-- 主要菜单 start -->
+            <div class="primary_menu warp-box">
+                <ul class="nav-menu">
+                    <li class="li1 _icon h1">
+                        <div>
+                        </div>
+                        <span>首页</span>
+                        <a class="cove" href="javascript:;"></a>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>848</span>
+                        </div>
+                        <span>动画</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a>MAD-AMV</a><i></i></li>
+                            <li><a>MMD-3D</a><i></i></li>
+                            <li><a>短片-手书-配音</a><i></i></li>
+                            <li><a>综合</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>97</span>
+                        </div>
+                        <span>番剧</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">连载动画</a><i></i></li>
+                            <li><a href="javascript:;">完结动画</a><i></i></li>
+                            <li><a href="javascript:;">资讯</a><i></i></li>
+                            <li><a href="javascript:;">官方延伸</a><i></i></li>
+                            <li><a href="javascript:;">新番时间表</a><i></i></li>
+                            <li><a href="javascript:;">番剧索引</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>105</span>
+                        </div>
+                        <span>国创</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">国产动画</a><i></i></li>
+                            <li><a href="javascript:;">国产原创相关</a><i></i></li>
+                            <li><a href="javascript:;">布袋戏</a><i></i></li>
+                            <li><a href="javascript:;">资讯</a><i></i></li>
+                            <li><a href="javascript:;">新番时间表</a><i></i></li>
+                            <li><a href="javascript:;">国产动画索引</a><i></i></li>\
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>音乐</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">原创音乐</a><i></i></li>
+                            <li><a href="javascript:;">翻唱</a><i></i></li>
+                            <li><a href="javascript:;">VOCALOID-UTAU</a><i></i></li>
+                            <li><a href="javascript:;">演奏</a><i></i></li>
+                            <li><a href="javascript:;">三次元音乐</a><i></i></li>
+                            <li><a href="javascript:;">OP/ED/OST</a><i></i></li>
+                            <li><a href="javascript:;">音乐选集</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>261</span>
+                        </div>
+                        <span>舞蹈</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">宅舞</a><i></i></li>
+                            <li><a href="javascript:;">三次元舞蹈</a><i></i></li>
+                            <li><a href="javascript:;">舞蹈教程</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>游戏</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">单机游戏</a><i></i></li>
+                            <li><a href="javascript:;">电子竞技</a><i></i></li>
+                            <li><a href="javascript:;">手机游戏</a><i></i></li>
+                            <li><a href="javascript:;">棋牌游戏</a><i></i></li>
+                            <li><a href="javascript:;">GMV</a><i></i></li>
+                            <li><a href="javascript:;">音游</a><i></i></li>
+                            <li><a href="javascript:;">Mugen</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>科技</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">趣味科普人文</a><i></i></li>
+                            <li><a href="javascript:;">野生技术学会</a><i></i></li>
+                            <li><a href="javascript:;">演讲-公开课</a><i></i></li>
+                            <li><a href="javascript:;">星海</a><i></i></li>
+                            <li><a href="javascript:;">数码</a><i></i></li>
+                            <li><a href="javascript:;">机械</a><i></i></li>
+                            <li><a href="javascript:;">汽车</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>生活</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">搞笑</a><i></i></li>
+                            <li><a href="javascript:;">日常</a><i></i></li>
+                            <li><a href="javascript:;">美食圈</a><i></i></li>
+                            <li><a href="javascript:;">动物圈</a><i></i></li>
+                            <li><a href="javascript:;">手工</a><i></i></li>
+                            <li><a href="javascript:;">绘画</a><i></i></li>
+                            <li><a href="javascript:;">ASMR</a><i></i></li>
+                            <li><a href="javascript:;">运动</a><i></i></li>
+                            <li><a href="javascript:;">其他</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>81</span>
+                        </div>
+                        <span>鬼畜</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">鬼畜调教</a><i></i></li>
+                            <li><a href="javascript:;">音MAD</a><i></i></li>
+                            <li><a href="javascript:;">人力VOCALOID</a><i></i></li>
+                            <li><a href="javascript:;">教程演示</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>572</span>
+                        </div>
+                        <span>时尚</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">美妆</a><i></i></li>
+                            <li><a href="javascript:;">服饰</a><i></i></li>
+                            <li><a href="javascript:;">健身</a><i></i></li>
+                            <li><a href="javascript:;">资讯</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>233</span>
+                        </div>
+                        <span>广告</span>
+                        <a class="cove" href="javascript:;"></a>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>娱乐</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">综艺</a><i></i></li>
+                            <li><a href="javascript:;">明星</a><i></i></li>
+                            <li><a href="javascript:;">Korea相关</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>999+</span>
+                        </div>
+                        <span>影视</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">影视杂谈</a><i></i></li>
+                            <li><a href="javascript:;">影视剪辑</a><i></i></li>
+                            <li><a href="javascript:;">短片</a><i></i></li>
+                            <li><a href="javascript:;">预告-资讯</a><i></i></li>
+                            <li><a href="javascript:;">特辑</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li class="li1">
+                        <div>
+                            <span>98</span>
+                        </div>
+                        <span>放映厅</span>
+                        <a class="cove" href="javascript:;"></a>
+                        <ul class="sub-nav">
+                            <li><a href="javascript:;">纪录片</a><i></i></li>
+                            <li><a href="javascript:;">电影</a><i></i></li>
+                            <li><a href="javascript:;">电视剧</a><i></i></li>
+                        </ul>
+                    </li>
+                    <li  class="li1 _icon zl">
+                        <div></div>
+                        <span>专栏</span>
+                        <a class="cove" href=""></a>
+                    </li>
+                    <li  class="li1 _icon gc">
+                        <div></div>
+                        <span>广场</span>
+                        <a class="cove" href=""></a>
+                    </li>
+                    <li  class="li1 _icon zb">
+                        <div></div>
+                        <span>直播</span>
+                        <a class="cove" href=""></a>
+                    </li>
+                    <li  class="li1 _icon xhw">
+                        <div></div>
+                        <span>小黑屋</span>
+                        <a class="cove" href=""></a>
+                    </li>
+
+                </ul>
+                <div class="random-p">
+                    <img src="img/dynamic/ran.gif" alt="">
+                </div>
+            </div>
+            <!-- end 主要菜单 -->
+        </div>
+        <!-- end 头部 -->
+
+        <div class="warp-box">
+            <!-- 推荐 start -->
+            <div id="chief_recommend" >
+                <!-- 左面 start -->
+                <div class="part-left">
+                    <ul class="banner">
+                        <li><img src="./img/chief_recommend/banner1.jpg" alt=""><a href="javascript:;"></a></li>
+                        <li><img src="./img/chief_recommend/banner3.jpg" alt=""><a href="javascript:;"></a></li>
+                        <li><img src="./img/chief_recommend/banner2.jpg" alt=""><a href="javascript:;"></a></li>
+                        <li><img src="./img/chief_recommend/banner4.jpg" alt=""><a href="javascript:;"></a></li>
+                    </ul>
+                    <ul class="title">
+                        <a href="javascript:;">为你pick的小姐姐加油吧！</a>
+                        <a href="javascript:;">高考“音”援——相信自己，为荣耀而战！</a>
+                        <a href="javascript:;">前方高能，剧透预警！</a>
+                        <a href="javascript:;">恭喜4AM！</a>
+                    </ul>
+                    <ul class="tag">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </ul>
+                </div>
+                <!-- end 左面 -->
+                <!-- 右面 start -->
+                <div class="part-right">
+                    <ul class="list">
+                        <li class="item"  title="【紫颜】激昂壮志-【啊我是皇家海军独角兽,指挥官能叫你哥哥吗？】">
+                            <img src="img/chief_recommend/r1.webp">
+                            <div class="card-mark">
+                                <p class="t">【紫颜】激昂壮志-【啊我是皇家海军独角兽,指挥官能叫你哥哥吗？】</p>
+                                <p class="up">up主：紫颜颜sweet</p>
+                                <p class="bf">播放：11.0万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="教你大胆的把 老师妹妹撩回家">
+                            <img src="img/chief_recommend/r2.webp">
+                            <div class="card-mark">
+                                <p class="t">教你大胆的把 老师妹妹撩回家</p>
+                                <p class="up">up主：豆砸OwO</p>
+                                <p class="bf">播放：11.5万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="【圈9x绝非言】生如逆旅【高考应援】【Lemon中文填翻】">
+                            <img src="img/chief_recommend/r3.webp">
+                            <div class="card-mark">
+                                <p class="t">【圈9x绝非言】生如逆旅【高考应援】【Lemon中文填翻】</p>
+                                <p class="up">up主：WineQ圈9</p>
+                                <p class="bf">播放：7.3万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="【高考大魔王】一口气全做对">
+                            <img src="img/chief_recommend/r4.webp">
+                            <div class="card-mark">
+                                <p class="t">【高考大魔王】一口气全做对</p>
+                                <p class="up">up主：推背兔の</p>
+                                <p class="bf">播放：22.5万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="【ACG大事件】肉番表化，热血再临，任天堂就是世界的主宰啊！">
+                            <img src="img/chief_recommend/r5.webp">
+                            <div class="card-mark">
+                                <p class="t">【ACG大事件】肉番表化，热血再临，任天堂就是世界的主宰啊！</p>
+                                <p class="up">up主：小M呜喵王</p>
+                                <p class="bf">播放：6.9万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="【绯缨白▪乐歌▪浩浩▪豆豆子▪Evalia】◈I'M HIGH◈">
+                            <img src="img/chief_recommend/r6.webp">
+                            <div class="card-mark">
+                                <p class="t">【绯缨白▪乐歌▪浩浩▪豆豆子▪Evalia】◈I'M HIGH◈</p>
+                                <p class="up">up主：绯缨白</p>
+                                <p class="bf">播放：3.8万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="【洛天依原创曲】青春calling【无名社】">
+                            <img src="img/chief_recommend/r7.webp">
+                            <div class="card-mark">
+                                <p class="t">【洛天依原创曲】青春calling【无名社】</p>
+                                <p class="up">up主：无名社</p>
+                                <p class="bf">播放：2.4万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="item"  title="後編【＠小豆×217×ATY×いりぽん】愉快的悲伤结局【原创振付】">
+                            <img src="img/chief_recommend/r8.webp">
+                            <div class="card-mark">
+                                <p class="t">後編【＠小豆×217×ATY×いりぽん】愉快的悲伤结局【原创振付】</p>
+                                <p class="up">up主：Iripon先生</p>
+                                <p class="bf">播放：1.4万</p>
+                                <span></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end 右面 -->
+            </div>
+            <!-- end 推荐 -->
+
+            <!-- 推广 start -->
+            <div id="home_popularize">
+                <!-- 左部分  -->
+                <div class="zone-warp-module">
+                    <div class="title-module">
+                        <i class="icon1"></i>
+                        <p class="t">推广</p>
+                    </div>
+                    <div class="con report-wrap-module">
+                        <ul class="h-c-list listbase">
+                            <li class="item b-item">
+                                <div class="imgbox b-imgbox">
+                                    <img src="img/home_popularize/l1.webp" alt="">
+                                    <div class="cove b-cove">
+                                        <p class="time">1.13</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="你们对祭司的力量一无所知">你们对祭司的力量一无所知</p>
+                            </li>
+                            <li class="b-item">
+                                <div class="b-imgbox">
+                                    <img src="img/home_popularize/l2.webp" alt="">
+                                    <div class="b-cove">
+                                        <p class="time">1.13</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="【面筋哥&简·拉基·茨德】流浪诗人">【面筋哥&简·拉基·茨德】流浪诗人</p>
+                            </li>
+                            <li class="b-item">
+                                <div class="b-imgbox">
+                                    <img src="img/home_popularize/l3.webp" alt="">
+                                    <div class="b-cove">
+                                        <p class="time">1.23</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="【LKs】一个69块的国产mp3刷新了我的三观">【LKs】一个69块的国产mp3刷新了我的三观</p>
+                            </li>
+                            <li class="b-item">
+                                <div class="b-imgbox">
+                                    <img src="img/home_popularize/l4.webp" alt="">
+                                    <div class="b-cove">
+                                        <p class="time">5.03</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="【大宋提刑官】禄蠹殛民·繁灯幻灭">【大宋提刑官】禄蠹殛民·繁灯幻灭</p>
+                            </li>
+                            <li class="b-item">
+                                <div class="b-imgbox">
+                                    <img src="img/home_popularize/l5.webp" alt="">
+                                    <div class="b-cove">
+                                        <p class="time">7.25</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="【刘老师】爆笑解说人气超高的韩国恐怖电影《昆池岩》">【刘老师】爆笑解说人气超高的韩国恐怖电影《昆池岩》</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 右部分 -->
+                <div class="h_p_r">
+                    <p class="r-title">
+                        <a href="javascript:;" title="在线观看：3582728">在线观看：3582728</a>
+                        <em></em>
+                        <a href="javascript:;" title="最新投稿：17340">最新投稿：17340</a>
+                    </p>
+                    <div class="r-con">
+                        <img src="img/home_popularize/r1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- end 推广 -->
+
+            <!-- 直播 start -->
+            <div class="m-item" id="nav-live">
+                <!-- banner -->
+                <div class="gg-floor-module">
+                    <img src="img/live/gg_banner.jpg" alt="">
+                    <a class="cove" href="javascript"></a>
+                </div>
+                <!-- 左面列表 -->
+                <div class="l-left">
+                    <div class="ll-t">
+                        <i class="icon1"></i>
+                        <p class="t">现在直播</p>
+                        <p class="ms">当前共有<span>7350</span>个在线直播</p>
+                        <a href="javascript:;">233秒居然能做这些！</a>
+                        <div class="more">
+                            <a href="javascript:;">
+                                <i class="sx"></i>
+                                <span>6045条新动态</span>
+                            </a>
+                            <a href="javascript:;">更多 ></a>
+                        </div>
+                    </div>
+                    <div class="ll-con">
+                        <ul class="list-nav">
+                            <<!-- li class="li1">
+                                <div class="img-box">
+                                    <img src="img/live/con-1-1.webp" alt="">
+                                    <div class="cove">
+                                        <p class="text">
+                                            <span class="aouther">yuki琥珀</span>
+                                            <span class="plays">1.6万</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="msg">变人</p>
+                                <p class="pt">游戏 · 其他游戏</p>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-right">
+                    <div class="tab">
+                        <span>直播排行</span>
+                        <span>关注的主播</span>
+                        <span class="on">为你推荐</span>
+                    </div>
+                    <div class="tab-box">
+                        <div class="tab-item rank">排行榜</div>
+                        <div class="tab-item">关注的主播</div>
+                        <div class="tab-item tuijian">
+                            <div class="slider">
+                                <ul class="pic">
+                                    <li><img src="img/live/r1.webp" alt=""><a href="javascript:;"></a></li>
+                                    <li><img src="img/live/r2.webp" alt=""><a href="javascript:;"></a></li>
+                                </ul>
+                                <ul class="title">
+                                    <a href="javascript:;" class="on">土木三班陈同学，给你唱首歌</a>
+                                    <a href="javascript:;">6/11正式开赛！</a>
+                                </ul>
+                                <ul class="trig">
+                                    <span class="on"></span><span></span>
+                                </ul>
+                            </div>
+                            <div class="anchor ">
+                                <a href="javascript:;"><img src="img/live/anchor1.png" alt=""></a>
+                                <a href="javascript:;"><img src="img/live/anchor2.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 直播 -->
+
+            <!-- 动画 start -->
+            <div class="m-item clearfix" id="donghua">
+                <div  class="zone-warp-module">
+                    <div class="title-module">
+                        <i class="dh-icon icon1"></i>
+                        <p class="t">动画</p>
+                        <p class="m-msg-nav"><span class="on">有新动态</span><span>最新投稿</span></p>
+                        <div class="more-module">
+                            <a href="javascript:;">
+                                <i class="sx"></i>
+                                <span>347条新动态</span>
+                            </a>
+                            <a href="javascript:;">更多 ></a>
+                        </div>
+                    </div>
+                     <div class="con report-wrap-module">
+                        <ul class="h-c-list listbase">
+                            <!-- <li class="item b-item">
+                                <div class="imgbox b-imgbox">
+                                    <img src="img/home_popularize/l1.webp" alt="">
+                                    <div class="cove b-cove">
+                                        <p class="time">1.13</p>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <p class="msg" title="你们对祭司的力量一无所知">你们对祭司的力量一无所知</p>
+                                <p class="num">
+                                    <span class="play"><i></i>1312</span>
+                                    <span class="danmu"><i></i>123</span>
+                                </p>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="zone-rank">
+                    <div class="rank-head">
+                        <p class="rank-text">排行</p>
+                        <p class="type"><span class="on">全部</span><span>原创</span></p>
+                    </div>
+                    <div class="rank-con">
+                        <div class="con-box">
+                            <ul class="c-part">
+                                <li class="item first">
+                                    <span class="icon non">1</span>
+                                    <div class="msg">
+                                        <img src="img/donghua/ri1.webp" alt="【Lex】B站历史上意义最重大的10部动画！">
+                                        <div class="text">
+                                            <p class="t-til">【Lex】B站历史上意义最重大的10部动画！</p>
+                                            <p class="t-pot">综合评分：184.9万</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon non">2</span>
+                                    <div class="msg">
+                                       【凉风】本季福利高能！看着看着就蹦出来一对O子
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon non">3</span>
+                                    <div class="msg">
+                                       【梗百科50】518？月球？这可能是史上梗最多的游戏？？？
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon">4</span>
+                                    <div class="msg">
+                                        【麦说柯南】既然你们这么想听我水柯南，那就来看看最新的漫画吧
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon">5</span>
+                                    <div class="msg">
+                                       【崩坏3】喂，布洛妮娅，这就是舰长新抽到的女仆吗
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon">6</span>
+                                    <div class="msg">
+                                       海贼王专题#83: 凯多之子卡塔库栗
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <span class="icon">7</span>
+                                    <div class="msg">
+                                       给客人画外卖袋系列3（这次请戴耳机享用~）
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <a class="more" href="">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end 动画 -->
+
+            <!-- 番剧 start -->
+            <div class="m-item" id="fanju">
+                <div class="gg-floor-module">
+                    <img src="img/fanju/banner.jpg" alt="">
+                    <a class="cove" href="javascript"></a>
+                </div>
+                <div class="main clearfix">
+                    <div class="comic-module clearfix">
+                        <div class="comic-title-module">
+                            <i class="fj-icon"></i>
+                            <p class="t">番剧</p>
+                            <ul class="week">
+                                <li class="on">最新</li>
+                                <li>一</li>
+                                <li>二</li>
+                                <li>三</li>
+                                <li>四</li>
+                                <li>五</li>
+                                <li>六</li>
+                                <li>日</li>
+                            </ul>
+                            <a href="javascript:;" class="new-fu-time">新番时间表></a>
+                        </div>
+                        <div class="comic-con">
+                            <ul class="con-box">
+                                <li class="con-item">
+                                    <a  class="imgA" href="javascript:;"><img src="img/fanju/1_1.webp" alt=""></a>
+                                    <div class="r-text">
+                                        <a href="javascript:;" class="name">智龙迷城</a>
+                                        <p class="news on">更新至<span class="j-icon">12话</span></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="zone-rank">
+                        <div class="rank-head">
+                            <p class="rank-text">排行</p>
+                        </div>
+                        <div class="rank-con">
+                            <div class="con-box">
+                                <ul class="c-part f-j-change">
+                                    <li class="item">
+                                        <span class="icon non">1</span>
+                                        <div class="msg">
+                                            超能力女儿
+                                            <span class="new-js">更新至第11话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon non">2</span>
+                                        <div class="msg">
+                                            我的英雄学院 第三季
+                                            <span class="new-js">更新至第49话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon non">3</span>
+                                        <div class="msg">
+                                            戒律的复活
+                                            <span class="new-js">更新至第22话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">4</span>
+                                        <div class="msg">
+                                            Megalo Box
+                                            <span class="new-js">更新至第11话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">5</span>
+                                        <div class="msg">
+                                            宅男腐女恋爱真难
+                                            <span class="new-js">更新至第10话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">6</span>
+                                        <div class="msg">
+                                            齐木楠雄的灾难 第二季
+                                            <span class="new-js">更新至第22话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">7</span>
+                                        <div class="msg">
+                                            OVERLORDⅡ
+                                            <span class="new-js">全13话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">7</span>
+                                        <div class="msg">
+                                            鬼灯的冷彻 第二季 其二
+                                            <span class="new-js">更新至第24话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">7</span>
+                                        <div class="msg">
+                                            OVERLORD
+                                            <span class="new-js">全13话</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <span class="icon">7</span>
+                                        <div class="msg">
+                                            魔卡少女樱 CLEAR CARD篇
+                                            <span class="new-js">全22话</span>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <a class="more" href="">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zone-warp-module b-l-con">
+                    <div class="title-module">
+                        <!-- <i class="icon1"></i> -->
+                        <p class="t">番剧动态</p>
+                        <p class="m-msg-nav"><span class="on">最新动态</span><span>最新投稿</span></p>
+                        <div class="more-module">
+                            <a href="javascript:;">
+                                <i class="sx"></i>
+                                <span>142条新动态</span>
+                            </a>
+                            <a href="javascript:;">更多 ></a>
+                        </div>
+                    </div>
+                     <div class="con report-wrap-module">
+                        <ul class="h-c-list listbase">
+                            <!-- 模板 start-->
+                            <li class="item b-item">
+                                <div class="imgbox b-imgbox">
+                                    <img src="img/fanju/bb1.webp" alt="">
+                                    <div class="cove b-cove">
+                                        <p class="time">1.13</p>
+                                    </div>
+                                </div>
+                                <p class="msg" title="你们对祭司的力量一无所知">你们对祭司的力量一无所知</p>
+                                <p class="num">
+                                    <span class="play"><i></i>1312</span><!--
+                                    --><span class="danmu"><i></i>123</span>
+                                </p>
+                            </li>
+                            <!-- end 模板 -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="tbtj">
+                    <p class="til">特别推荐</p>
+                    <div class="img-part">
+                        <div class="ibox">
+                            <img src="img/fanju/tbtj1.webp" alt=""><img src="img/fanju/tbtj2.webp" alt="">
+                        </div>
+                        <div class="msg">
+                            <p>齐木楠雄的灾难 第二季</p>
+                            <p>只要和你在一起</p>
+                        </div>
+                        <div class="tab">
+                            <span class="on"></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 番剧 -->
+
+           <!--  模块html <br>
+            <div class="zone-warp-module">
+                <div class="title-module">
+                    <i class="icon1"></i>
+                    <p class="t">模块 标题html</p>
+                    <p class="m-msg-nav"><span class="on">asdasd</span><span>asdasd</span></p>
+                    <div class="more-module">
+                        <a href="javascript:;">
+                            <i class="sx"></i>
+                            <span>6045条新动态</span>
+                        </a>
+                        <a href="javascript:;">更多 ></a>
+                    </div>
+                </div>
+                 <div class="con report-wrap-module">
+                    <ul class="h-c-list listbase">
+                        <li class="item b-item">
+                            <div class="imgbox b-imgbox">
+                                <img src="img/home_popularize/l1.webp" alt="">
+                                <div class="cove b-cove">
+                                    <p class="time">1.13</p>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <p class="msg" title="你们对祭司的力量一无所知">你们对祭司的力量一无所知</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            -->
+
+            <!--
+                <div class="gg-floor-module">
+                    <img src="img/fanju/banner.jpg" alt="">
+                    <a class="cove" href="javascript"></a>
+                </div>
+             -->
+
+            <!-- 侧边导航 start -->
+            <div id="slide">
+                <div class="box">
+                    <ul>
+                        <li class="tab">直播</li>
+                        <li class="tab">动画</li>
+                        <li class="tab">番剧</li>
+                        <li id="col"></li>
+                    </ul>
+                    <div class="s-line"></div>
+                    <div class="back-top"></div>
+                </div >
+
+            </div>
+            <!-- end 侧边导航 -->
+        </div>
+    </div>
+    <script src="../jquery/jquery-1.12.1.min.js"></script>
+    <script src="data/head-data.js"></script>
+    <script src="js/myMethod.js"></script>
+    <script src="js/live.js"></script>
+    <script src="js/donghua.js"></script>
+    <script src="js/fanju.js"></script>
+    <script src="js/side.js"></script>
+
+    <script src="js/js01.js"></script>
+    <script src="js/chief_recommend.js"></script>
+</body>
+</html>

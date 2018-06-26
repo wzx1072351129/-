@@ -1,0 +1,515 @@
+//播放图标
+.play(){
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    background: url(../img/chief_recommend/下载.png) no-repeat;
+}
+
+//公共的
+.gg-floor-module{
+    height: 96px;
+    position: relative;
+    border-radius:5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    .cove{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0; left: 0;
+    }
+}
+
+//模块样式
+.zone-warp-module{
+    float: left;
+    width: 900px;
+    color:#000;
+    .title-module{
+        color:#000;
+        height: 40px;
+        padding-right: 20px;
+        i.icon1{
+            display: block;
+            float: left;
+            margin-top: -10px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: url(../img/icons.png) no-repeat -140px -75px;
+        }
+        p.t{
+            display: inline-block;
+            float: left;
+            font-size: 24px;
+            line-height: 24px;
+            margin-right: 20px;
+        }
+        .m-msg-nav{
+            span{
+                display: block;
+                float: left;
+                padding-bottom: 4px;
+                cursor:pointer;
+                margin-right: 12px;
+                margin-top: 5px;
+                &:hover{
+                    color:#00a1d6;
+                }
+            }
+            // 点击选中有下划线样式
+            span.on{
+                color:#00a1d6;
+                border-bottom: 1px solid #00a1d6;
+                position: relative;
+            }
+            span.on:after{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-width:3px;
+                border-style: solid;
+                border-color:transparent transparent #00a1d6 transparent;
+                left: 50%;
+                margin-left: -2px;
+                bottom: -1px;
+            }
+        }
+        .more-module{ // 标题右侧 '更多'
+            float: right;
+            line-height: 22px;
+            //刷新
+            .sx{
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: url(../img/icons.png) no-repeat -473px -88px;
+                transition: transform .5s;
+                // background-color: #f0f;
+                vertical-align: top;
+                margin-top: 4px
+            }
+            a{
+                &:hover .sx{
+                    transform: rotate(-360deg);
+                }
+                color:#222;
+                display: inline-block;
+                height: 22px;
+                border:1px solid #ccd0d7;
+                background-color:#fff;
+                transition: background-color .2s;
+                border-radius:5px;
+                padding:0 10px;
+                margin-left: 5px;
+                &:hover{
+                    background-color:#ccd0d7;
+                }
+            }
+        }
+    }
+
+}
+//统一的列表样式
+.report-wrap-module,.nav-list-base{
+    // height: 150px;
+    .listbase{
+        overflow: hidden;
+        .b-item{
+            overflow: hidden;
+            cursor:pointer;
+            float: left;
+            width: 160px;
+            height: 100%;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            //图片窗口
+            .b-imgbox{
+                border-radius: 5px;
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                height: 100px;
+                img{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+                //遮罩
+                .b-cove{
+                    opacity:0;
+                    transition: opacity .3s;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: rgba(0,0,0,.2);
+                    .time{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        height: 20px;
+                        line-height: 20px;
+                        padding-left: 5px;
+                        color:#fff;
+                        width: auto;
+                    }
+                    span{
+                        .play();
+                    }
+                }
+            }
+            &:hover .b-imgbox .b-cove{
+                opacity: 1;
+            }
+            .msg{
+                color: #222;
+                height: 40px;
+                padding-top: 7px;
+                padding-bottom: 2px;
+                overflow: hidden;
+                line-height: 20px;
+                transition: color .3s;
+            }
+            &:hover .msg{
+                color:#00a1d6;
+            }
+            &:hover .num{
+                transform: translateY(20px);
+            }
+            .num{
+                position: absolute;
+                height: 20px;
+                line-height: 20px;
+                left: 0;
+                width: 100%;
+                bottom: 4px;
+                color:#9ba3ab;
+                background: #fff;
+                transition: transform .3s;
+                span{
+                    display: inline-block;
+                    width: 50%;
+                    height: 14px;
+                    line-height: 12px;
+                    i{
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        background: url(../img/icons.png) no-repeat;
+                        vertical-align: top;
+                        padding-right: 5px;
+                    }
+                }
+                .play i{background-position: -282px -90px;}
+                .danmu i{background-position: -282px -218px;}
+            }
+
+        }
+    }
+}
+
+// 排行榜的模板
+.zone-rank{
+    width: 260px;
+    float: left;
+    .rank-head{
+        height: 24px;
+        color:#222;
+        margin-bottom: 15px;
+        p{
+            display: inline-block;
+        }
+        p.rank-text{
+            line-height: 24px;
+            font-size:18px;
+            vertical-align:top;
+            margin-right:13px;
+        }
+        p.type{
+            span{
+                display: block;
+                float: left;
+                padding-bottom: 4px;
+                cursor:pointer;
+                margin-right: 12px;
+                margin-top: 5px;
+                &:hover{
+                    color:#00a1d6;
+                }
+            }
+            // 点击选中有下划线样式
+            span.on{
+                color:#00a1d6;
+                border-bottom: 1px solid #00a1d6;
+                position: relative;
+            }
+            span.on:after{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-width:3px;
+                border-style: solid;
+                border-color:transparent transparent #00a1d6 transparent;
+                left: 50%;
+                margin-left: -2px;
+                bottom: -1px;
+            }
+        }
+    }
+    .rank-con{
+        width: 260px;
+        overflow: hidden;
+        position: relative;
+        .more{
+            margin-top: 20px;
+            line-height: 24px;
+            display: block;
+            height: 24px;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid #e0e6ed;
+            border-radius: 4px;
+            background-color: #e5e9ef;
+            color:#222;
+            transition: all .2s;
+            &:hover{
+                background-color: #ccd0d7;
+                border-color: #ccd0d7;
+            }
+        }
+        .con-box{
+            width: 200%;
+            transition: margin-left .35s;
+            overflow: hidden;
+            .c-part{
+                width: 50%;
+                float: left;
+                .item{
+                    &:hover{
+                        color:#00a1d6;
+                    }
+                    // height: 18px;
+                    cursor:pointer;
+                    line-height: 18px;
+                    margin-top: 20px;
+                    overflow-y: hidden;
+                    position: relative;
+                    color:#222;
+                    .icon{
+                        display:block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 4px;
+                        font-weight:bolder;
+                        color:#fff;
+                        text-align: center;
+                        line-height: 18px;
+                        background-color:#b8c0cc;//#b8c0cc //f15e8b
+                        // font-
+                    }
+                    .non{
+                        background-color: #f15e8b;
+                    }
+                    .msg{
+                        height: 18px;
+                        padding-left: 30px;
+                    }
+                }
+                .first{
+                    margin: 0 0 15px 0;
+                    .msg{height: auto;}
+                    img{
+                        float: left;
+                        width: 80px;
+                        height: 50px;
+                        display: block;
+                        border-radius:4px;
+                        margin-right: 5px;
+                    }
+                    .text{
+                        width: 145px;
+                        height: 50px;
+                        float: left;
+                        .t-til{
+                            line-height: 18px;
+                            height: 36px;
+                            margin-top: -3px;
+                        }
+                        .t-pot{
+                            color:#99a2aa;
+                            overflow: hidden;
+                            line-height: 12px;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+
+            .f-j-change{
+                .item:first-child{
+                    margin-top: 0;
+                }
+                .new-js{
+                    display: inline-block;
+                    color:#aaa;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+//番剧的模板
+.comic-module{
+    width: 900px;
+    float: left;
+    .comic-title-module{
+        color:#000;
+        height: 45px;
+        width: 880px;
+        padding-right: 20px;
+        i.fj-icon{
+            display: block;
+            float: left;
+            margin-top: -10px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: url(../img/icons.png) no-repeat -140px -140px;
+        }
+        p.t{
+            display: inline-block;
+            float: left;
+            font-size: 24px;
+            line-height: 24px;
+            margin-right: 20px;
+        }
+        .week{
+            float: left;
+            li{
+                float: left;
+                width: 78px;
+                height: 20px;
+                line-height: 20px;
+                padding-bottom: 7px;
+                text-align: center;
+                font-size: 18px;
+                border-bottom:1px solid #e5e9ef;
+                position: relative;
+                cursor:pointer;
+            }
+            li.on{
+                border-bottom-color:#00a1d6;
+                &:after{
+                    content: "";
+                    position: absolute;
+                    margin-left: -2px;
+                    left: 50%;
+                    bottom: 0;
+                    width: 0;
+                    height: 0;
+                    border-width: 3px;
+                    border-style: solid;
+                    border-color:transparent transparent #00a1d6 transparent;
+                }
+            }
+        }
+        .new-fu-time{
+            float: right;
+            display: block;
+            width: 104px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            font-size: 12px;
+            border:1px solid #f25d8e;
+            border-radius:4px;
+            margin-top: -8px;
+            color:#f25d8e;
+            &:hover{
+                color: #fff;
+                background-color: #f25d8e;
+            }
+        }
+    }
+    // 番剧列表的模板
+    .comic-con{
+        width: 864px;
+        height: 420px;
+        overflow: hidden;
+        float: left;
+        .con-box{
+            width: 100%;
+            overflow: hidden;
+            .con-item{
+                float: left;
+                margin: 0 35px 37px 0;
+                .imgA{
+                    float: left;
+                    display: block;
+                    width: 72px;
+                    height: 72px;
+                    border-radius:4px;
+                    margin-right: 12px;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .r-text{
+                    float: left;
+                    width: 96px;
+                    height: 72px;
+                    line-height: 18px;
+                    font-size: 12px;
+                    position: relative;
+                    .name{
+                        display: block;
+                        height: 36px;
+                        color:#222;
+                        overflow: hidden;
+                    }
+                    .news{
+                        position: absolute;
+                        width: 100%;
+                        height: 18px;
+                        left: 0;
+                        bottom: 0;
+                        color:#aaa;
+                        .j-icon{
+                            display: inline-block;
+                            height: 18px;
+                            padding: 0 5px;
+                            border-radius:9px;
+                            margin-left: 5px;
+                            background-color:#b8c0cc;
+                            color:#fff;
+                            cursor:pointer;
+                        }
+                        &.on .j-icon{
+                            background-color:#ff8eb3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

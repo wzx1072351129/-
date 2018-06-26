@@ -1,0 +1,356 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>JS飞机大战</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;}
+
+            /*盒子 start*/
+            #box{width: 300px;height: 500px;margin:50px auto;border:10px solid #fff;position: relative;overflow: hidden;}
+            /*end 盒子*/
+
+            /*标题 start*/
+            #box h1{color: #fff;margin-top: 50px;text-align: center;font-size: 30px}
+            /*end 标题*/
+
+            /*菜单 start*/
+            #box p.diff{width: 150px;height: 35px;line-height: 35px;text-align: center;background: #fff;margin: 50px auto;cursor: pointer;}
+            #box p.diff:hover{background:pink;color: #fff;}
+            #box p.diff.fly{color: #f60;font-weight: bold;}
+            /*end 菜单*/
+
+            /*战机*/
+            #box .plane{position: absolute;}
+            /*子弹*/
+            #box .biu{position: absolute;}
+            /*敌军*/
+            #box .enemy{position: absolute;}
+
+            /*结束菜单 start*/
+            #box .p_over{color: #fff;font-size: 24px;font-weight: bold;margin: 50px auto 0;text-align: center;}
+            #box .score{position: absolute;top: 5px;left: 5px;font-size: 14px;color: #fff;}
+            #box .P_score{margin: 40px auto;text-align: center;font-size: 14px;color: #fff;line-height: 30px;}
+            #box .P_reStart{width: 150px;height: 35px;line-height: 35px;text-align: center;background: #fff;margin: 50px auto;cursor: pointer;font-weight: bold;}
+            #box .P_reStart:hover{background:pink;color: #fff;}
+            /*end 结束菜单  */
+        </style>
+    </head>
+<body>
+
+    <script type="text/javascript">
+        window.onload=function(){
+            Game.exe();
+        }
+        Game={
+
+            //接口函数
+            exe:function(){
+                document.body.style.background="#000";
+                var oBox=document.createElement("div");
+                    oBox.id="box";
+                document.body.appendChild(oBox);
+                this.init(oBox);
+            },
+
+            //初始化
+            init:function(oBox){
+                oBox.innerHTML="";
+                var oH=document.createElement("h1");
+                oBox.appendChild(oH);
+                oH.innerText="飞机大战v1.0";
+
+                //难易程度 显示
+                var diff=["简单难度","中等难度","困难难度","飞哥附体",]
+                for(var i=0;i<4;i++){
+                    var oP=document.createElement("p");
+                    oP.className="diff";
+                    oP.innerHTML=diff[i];
+                    oP.index=i;
+                    if(i==3){
+                        oP.className+=" fly";
+                    }
+                    oBox.appendChild(oP);
+                    oP.onclick=function(ev){
+                        ev=ev||event;
+                        //调用飞机函数
+                        Game.plane(oBox,ev,this.index);
+                    }
+
+                }
+            },
+
+            //创建我军战机
+            plane:function(oBox,ev,index){
+                oBox.innerHTML="";
+
+                var oPlane=new Image();
+                    oPlane.className="plane";
+                    oPlane.src="img/plane.png";
+                    oPlane.width=60;
+                    oPlane.height=36;
+
+                    //战机生成位置(鼠标所在位置)
+                    oPlane.style.left=ev.pageX- oBox.offsetLeft-10- oPlane.width/2+"px";
+                    oPlane.style.top=ev.pageY- oBox.offsetTop-10- oPlane.height/2+"px";
+                oBox.appendChild(oPlane);
+
+                //限制战机飞行区域
+                var leftMin=-oPlane.width/2;
+                var leftMax=parseFloat(Game.getStyle(oBox,"width"))-oPlane.width/2;
+                var topMin=0;
+                var topMax=parseFloat(Game.getStyle(oBox,"height"))- oPlane.height;
+
+                //战机跟随鼠标移动
+                document.onmousemove=function(ev){
+                    ev=ev||event;
+                    //实时更新战机位置
+                    var l=ev.pageX- oBox.offsetLeft-10- oPlane.width/2;
+                    var t=ev.pageY- oBox.offsetTop-10- oPlane.height/2;
+                    //调用限制
+                    l=Math.max(l,leftMin);
+                    l=Math.min(l,leftMax);
+                    t=Math.max(t,topMin);
+                    t=Math.min(t,topMax);
+
+                    oPlane.style.left=l+"px";
+                    oPlane.style.top=t+"px";
+                }
+
+                //子弹生成速度
+                var zdsc=0;
+
+                //判断难易度
+                switch(index){
+                    case 0:
+                        zdsc=200;
+                        break;
+                    case 1:
+                        zdsc=300;
+                        break;
+                    case 2:
+                        zdsc=400;
+                        break;
+                    case 3:
+                        zdsc=30;
+                        break;
+                }
+
+                //子弹生成(定时器)
+                oPlane.bTimer=setInterval(function(){
+                    var oBiu=new Image();
+                        oBiu.src="img/bullet.png";
+                        oBiu.className="biu";
+                        oBiu.width=6;
+                        oBiu.height=22;
+                        //子弹生成位置(战机头部)
+                        oBiu.style.left=oPlane.offsetLeft+oPlane.width/2- oBiu.width/2+"px";
+                        oBiu.style.top=oPlane.offsetTop- oBiu.height+"px";
+
+                        //子弹运动(定时器)
+                        oBiu.time=setInterval(function(){
+                            oBiu.style.top=oBiu.offsetTop-3+"px";
+                            //超出范围 销毁子弹
+                            if(oBiu.offsetTop<=-oBiu.height){
+                                clearInterval(oBiu.time);
+                                oBox.removeChild(oBiu);
+                            }
+                        },13);
+                    oBox.appendChild(oBiu);
+
+                },zdsc);
+
+                //执行敌军命令
+                Game.enemy(oBox,oPlane,index);
+
+            },
+
+            //敌军
+            enemy:function(oBox,oPlane,index){
+                //分数
+                var score=0;
+                var oS=document.createElement("span");
+                    oS.className="score";
+                    oS.innerHTML=score;
+                oBox.appendChild(oS);
+
+                //敌军生成,下降速度
+                var sc,xl;
+
+                //判断难易度
+                switch(index){
+                    case 0:
+                        sc=400;
+                        xl=2;
+                        break;
+                    case 1:
+                        sc=300;
+                        xl=3;
+                        break;
+                    case 2:
+                        sc=200;
+                        xl=4;
+                        break;
+                    case 3:
+                        sc=100;
+                        xl=3;
+                        break;
+                }
+
+                //生成敌军(定时器)
+                var eTimer=setInterval(function(){
+                    var oEnemy=new Image();
+                        oEnemy.src="img/enemy.png";
+                        oEnemy.width=23;
+                        oEnemy.height=30;
+                        oEnemy.className="enemy";
+                        //敌军生成位置(顶部随机位置)
+                        oEnemy.style.top=-oEnemy.height+"px";
+                        oEnemy.style.left=Math.random()*parseFloat(Game.getStyle(oBox,"width"))-oEnemy.width/2+"px";
+
+                        oBox.appendChild(oEnemy);
+
+                        //下落速度随机不同
+                        var XL=Math.random()*2-1+xl;
+                        oEnemy.MoveTime=setInterval(function(){
+                            oEnemy.style.top=oEnemy.offsetTop+XL+"px";
+                            if(oEnemy.offsetTop>=parseFloat(Game.getStyle(oBox,"height"))){
+                                clearInterval(oEnemy.time);
+                                oBox.removeChild(oEnemy);
+                            }
+                        },13);
+
+                        //为敌军添加碰撞
+                        oEnemy.pzTimer=setInterval(function(){
+                            //获取现在所与的子弹
+                            var aBiu=getClass("biu",oBox);
+                            var str="";
+                            //和所有的子弹检测碰撞
+                            for(var i=0;i<aBiu.length;i++){
+                                if(Game.pz(oEnemy,aBiu[i])){
+                                    score+=1000;
+                                    oS.innerHTML=score;
+                                    //移出碰撞的子弹,敌军移动,碰撞定时器
+                                    oBox.removeChild(aBiu[i]);
+                                    oEnemy.src="img/boom.png";
+                                    clearInterval(oEnemy.MoveTime);
+                                    clearInterval(oEnemy.pzTimer);
+                                    setTimeout(function(){
+                                        if (oEnemy.parentNode){
+                                            oBox.removeChild(oEnemy);
+                                        }
+                                    },500);
+                                }
+                            };
+
+                            //监测敌军与战机的碰撞
+                            if(Game.pz(oEnemy,oPlane)){
+                                oEnemy.src="img/boom.png";
+                                oPlane.src="img/boom2.png";
+                                //移除相关的定时器
+                                clearInterval(eTimer);
+                                clearInterval(oEnemy.MoveTime);
+                                clearInterval(oEnemy.pzTimer);
+                                clearInterval(oPlane.bTimer);
+                                //战机不在岁鼠标移动
+                                document.onmousemove=null;
+                                setTimeout(function(){
+                                    if(oEnemy.parentNode){
+                                        //GAME OVER
+                                        Game.over(oBox,score);
+                                    }
+                                },1000);
+                            }
+
+                        },20);
+
+
+
+                },sc);
+            },
+
+            //碰撞监测
+            pz:function(obj1,obj2){
+                var T1=obj1.offsetTop,
+                    B1=T1+obj1.clientHeight,
+                    L1=obj1.offsetLeft,
+                    R1=L1+obj1.clientWidth;
+
+                var T2=obj2.offsetTop,
+                    B2=T2+obj2.clientHeight,
+                    L2=obj2.offsetLeft,
+                    R2=L2+obj2.clientWidth;
+                /*
+                    逆向思维
+                        除去所有没有碰撞的可能,都是碰撞
+                */
+               return !(R2<L1||B2<T1||L2>R1||T2>B1);
+
+            },
+
+            //游戏结束
+            over:function(oBox,score){
+                oBox.innerHTML="";
+                var oP=document.createElement("p");
+                    oP.innerHTML="GAME OVER";
+                    oP.className="p_over";
+                var oP2=document.createElement("p");
+                    oP2.className="P_score"
+                    oP2.innerHTML="你的得分是:<br/>"+score;
+                var oP3=document.createElement("p");
+                    oP3.className="P_reStart";
+                    oP3.innerHTML="从新开始";
+                    oP3.onclick=function(){
+                        Game.init(oBox);
+                    }
+                oBox.appendChild(oP);
+                oBox.appendChild(oP2);
+                oBox.appendChild(oP3);
+            },
+
+
+
+            //获取内联样式(兼容)
+            getStyle:function(obj,attr){
+                return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+            }
+
+        };
+
+        //外部方法  获取类名(兼容)
+        function getClass(cName,parent){
+            parent=parent||document;
+            var arr=[];
+            if(document.getElementsByClassName){
+                var x=parent.getElementsByClassName(cName);
+                for(var i =0;i<x.length;i++){
+                    arr[i]=x[i];
+                }
+            }else{
+                allE=parent.getElementsByTagName("*");
+                for(var i =0;i<allE.length;i++){
+                    var arrC=allE[i].split(" ");
+                    for(var k =0;k<arrC.length;k++){
+                        if(cName==arrC[k]){
+                            arr.push(allE[i]);
+                            break;
+                        }
+
+                    }
+                }
+            }
+            return arr;
+        }
+    </script>
+</body>
+</html>

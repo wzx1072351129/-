@@ -1,0 +1,205 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>动态相册</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+            body,html{width: 100%;height: 100%;}
+            body{font-size:12px;font-family:"微软雅黑";color:#666;overflow: hidden;}
+            #warp{/*width: 750px;height: 500px;*/width: 90%;height: 90%;position: relative;top: 5%;left: 5%;}
+            #warp #list li{width: 125px;height: 125px;box-shadow:0 0 1px #000;position: absolute;t/*ransition:top 1s,left 1s*/}
+            #warp #list li img{transform: scale(0.92);transition: transform 1s}
+            #warp #btn span{display: block;width: 50px;height: 30px;border-radius: 2px;box-shadow:0 0 1px #000;text-align: center;line-height: 30px;font-size: 14px;color: #000;position: fixed;top: 50%;margin-top: -12px;cursor: pointer;display: none;background: #ACD15D;}
+            #warp #btn span.left{left: 2%;}
+            #warp #btn span.right{right: 2%;}
+            #warp #btn span:active{background: #829E46;color: #fff;}
+
+
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    </head>
+<body>
+    <div id="warp">
+        <ul id="list">
+            <!-- <li><img src="img/1.jpg" alt=""></li> -->
+        </ul>
+        <div id="btn">
+            <span class="left">向左</span>
+            <span class="right">向右</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            var $list=$("#warp #list");
+
+            //长度,宽度
+            var num_x=6,
+                num_y=4;
+            var sum=num_x*num_y;
+
+            //初始化添加li
+            init();
+
+            //在初始化后获取li img
+            var $listLi=$("#warp #list li");
+            var $listLiImg=$("#warp #list li img");
+            var $btn=$("#warp #btn span");
+
+            //全局的图片序号
+            var imgIndex=0;
+
+            //初始位置,随机旋转角度
+            imgPos();
+            imgRotate();
+
+            //img窗口大小改变 img位置改变
+            $(window).resize(imgPos);
+
+            //展开与合并的开关 判断
+            var onCase=true;
+            //时间计数img btn
+            var onTime=0;
+                onTime2=0;
+
+            //img 点击事件
+            $listLi.click(function(){
+                if((new Date()-onTime)>2000){
+                    onTime=new Date();
+
+                    if(onCase){
+                        imgIndex=$(this).index();
+                        $listLiImg.css("transform","scale(1)");
+                        setTimeout(function(){
+                            $btn.fadeIn(1000);
+                            $listLi.css('background','url("img/big/'+(imgIndex+1)+'.jpg") no-repeat');
+                            imgBgCenter();
+                            $listLiImg.fadeOut(1000);
+                            $(window).off("resize").resize(imgBgCenter);
+                            onCase=!onCase;
+                        },1000);
+                    }else{
+                        imgPos();
+                        imgRotate();
+                        $btn.fadeOut(1000);
+                        $listLiImg.fadeIn(1000,function(){
+                            $listLi.css('background','')
+                            $listLiImg.css("transform","scale(0.92)");
+                        });
+                        $(window).off("resize").resize(imgPos);
+                        onCase=!onCase;
+                    }
+                 }
+            });
+
+            //btn 点击事件
+            $btn.click(function(){
+                if((new Date()-onTime2)>800){
+                onTime2=new Date();
+                    var i=$(this).index();
+                    if(i){
+                        imgIndex++;
+                        imgIndex%=sum;
+                    }else{
+                        imgIndex--;
+                        if(imgIndex<0)imgIndex=sum-1;
+                    }
+                    imgChang(imgIndex);
+                }
+            });
+
+            //初始添加li
+            function init(){
+                for(var i=0;i<sum;i++){
+                    var $li=$('<li><img src="img/'+(i+1)+'.jpg"/></li>');
+                    $list.append($li);
+                }
+            }
+
+            //图片位置函数
+            function imgPos(){
+                var liW=$listLi.width(),
+                    liH=$listLi.height();
+
+                var warpW=$("#warp").width(),
+                    warpH=$("#warp").height();
+
+                var dir_x=((warpW - num_x*liW)/(num_x-1)+liW),
+                    dir_y=((warpH - num_y*liH)/(num_y-1)+liH);
+
+                $listLi.each(function(i){
+                    $(this).css({
+                        left:dir_x*(i%num_x)+"px",
+                        top:dir_y*parseInt(i/num_x)+"px",
+                        transition:"1s"
+                    });
+                });
+            }
+
+            //img 中心聚集函数
+            function imgBgCenter(){
+                var liW=$listLi.width(),
+                    liH=$listLi.height();
+
+                var warpW=$("#warp").width(),
+                    warpH=$("#warp").height();
+                var one_x=(warpW- liW*num_x)/2,
+                    one_y=(warpH- liH*num_y)/2;
+
+                $listLi.each(function(i){
+                    var X=liW*(i%num_x),
+                        Y=liH*parseInt(i/num_x);
+                    $(this).css({
+                        left:one_x+X+"px",
+                        top:one_y+Y+"px",
+                        transform:"rotate(0deg)",
+                        backgroundPosition:-X+"px "+(-Y)+"px",
+                        transition: "transform 1s,left 1s,top 1s",
+                    });
+                });
+            }
+
+            //img 随机旋转角度函数
+            function imgRotate(){
+                $listLi.each(function(i){
+                    $(this).css({
+                        transform:"rotate("+(Math.random()-0.5)*60+"deg)",
+                    });
+                });
+            }
+
+            //img 切换函数      注意:backgroundImage不能加no-repeat
+            function imgChang(imgIndex){
+                var arr=[];
+                for(var i=0;i<sum;i++){
+                    arr[i]=i;
+                }
+                var timer=setInterval(function(){
+                    var i=Math.floor(Math.random()*arr.length);
+
+                    $listLi.eq(arr[i]).css('backgroundImage' , 'url(img/big/'+(imgIndex+1)+'.jpg)');
+                    arr.splice(i,1);
+
+                    if(arr.length==0)clearInterval(timer);
+                },30);
+            }
+
+            //清除按钮文字被选中
+            (function(){
+                $btn.mousedown(function(){
+                    return false;
+                });
+            })();
+
+        })
+    </script>
+</body>
+</html>

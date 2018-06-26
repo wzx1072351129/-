@@ -1,0 +1,177 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en" onselectstart="return false">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>案例库</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+        </style>
+        <!-- 引入css样式 -->
+        <link rel="stylesheet" type="text/css" href="css/dome.css">
+        <!-- 引入jQuery 官方类库 -->
+        <script type="text/javascript" src="../jquery/jquery-1.12.1.min.js"></script>
+        <!-- 引入鼠标滚轮类库 -->
+        <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+
+    </head>
+<body >
+    <!-- warp start -->
+    <div id="warp">
+        <!-- main start -->
+        <ul id="main">
+            <!-- <li>
+                <p class="type">JS</p>
+                <p class="title">QQ空间弹窗</p>
+                <p class="date">2017/7/29</p>
+                <p class="index" >1</p>
+            </li> -->
+        </ul>
+        <!-- end main -->
+
+        <!-- styleBtn start -->
+        <ul id="styleBtn">
+            <li>Table</li>
+            <li>Sphere</li>
+            <li>Helix</li>
+            <li>Grid</li>
+        </ul>
+        <!-- end styleBtn -->
+
+        <!-- show start -->
+        <div id="show">
+            <div class="s_title"></div>
+            <div class="s_img"><img src="" alt=""></div>
+            <div class="s_dec"></div>
+            <div class="s_date"></div>
+        </div>
+        <!-- end start -->
+    </div>
+    <!-- end warp -->
+
+    <!-- iframe start -->
+    <div id="iframe">
+        <iframe src="" frameborder="0"></iframe>
+        <div class="back">Back</div>
+    </div>
+    <!-- end iframe -->
+
+    <!-- js 案例库数据 -->
+    <script type="text/javascript">
+        var domeJson=[
+        {title:"图片立体旋转",
+        type:"JS",
+        aouthor:"wzx",
+        date:"2017/8/30",
+        dec:"项目练习",
+        img:"../3D立方体图片旋转特效/截图.jpg",
+        src:"../3D立方体图片旋转特效/dome.html"},
+
+        {title:"翻页特效",
+        type:"CSS",
+        aouthor:"wzx",
+        date:"2017/8/25",
+        dec:"项目练习",
+        img:"../css3旋转翻页特效/截图.jpg",
+        src:"../css3旋转翻页特效/dome.html"},
+
+
+        {title:"JS飞机大战",
+        type:"JS",
+        aouthor:"wzx",
+        date:"2017/8/4",
+        dec:"JS代码小游戏!!",
+        img:"../JS飞机大战/img/截图.jpg",
+        src:"../JS飞机大战/dome.html"},
+
+        {title:"tmall官网(仿)",
+        type:"CJ",
+        aouthor:"wzx",
+        date:"2017/7/30",
+        dec:"项目练习",
+        img:"../tmall官网(仿)/image/展示.jpg",
+        src:"../tmall官网(仿)/dome.html"},
+
+        {title:"哔哩哔哩(仿)",
+        type:"CJ",
+        aouthor:"wzx",
+        date:"2018/6/20",
+        dec:"项目练习",
+        img:"../bilibili/截图.png",
+        src:"../bilibili/index.html"},
+
+        {title:"百度经验",
+        type:"JS",
+        aouthor:"wzx",
+        date:"0000/00/00",
+        dec:"项目练习",
+        img:"../百度经验/截图.jpg",
+        src:"../百度经验/dome.html"},
+
+        {title:"淡入淡出轮播图",
+        type:"JS",
+        aouthor:"wzx",
+        date:"0000/00/00",
+        dec:"轮播图练习",
+        img:"../京东淡入淡出/截图.jpg",
+        src:"../京东淡入淡出/dome.html"},
+
+        {title:"全屏滚动",
+        type:"JQ",
+        aouthor:"wzx",
+        date:"2017/8/8",
+        dec:"banner图全屏滚动",
+        img:"../全屏滚动/img/截图.jpg",
+        src:"../全屏滚动/dome.html"},
+
+        {title:"显示特效",
+        type:"JS",
+        aouthor:"wzx",
+        date:"0000/00/00",
+        dec:"项目练习",
+        img:"../鼠标不同方位移入/截图.jpg",
+        src:"../鼠标不同方位移入/dome.html"},
+
+        {title:"淘宝放大镜",
+        type:"JQ",
+        aouthor:"wzx",
+        date:"2017/8/8",
+        dec:"可根据图片不同尺寸自适应尺寸",
+        img:"../淘宝图片放大镜/img/截图.jpg",
+        src:"../淘宝图片放大镜/dome.html"},
+
+        {title:"拖拽相册",
+        type:"JS",
+        aouthor:"wzx",
+        date:"2017/8/9",
+        dec:"3D相册",
+        img:"../拖拽相册/img/截图.jpg",
+        src:"../拖拽相册/dome.html"},
+
+        {title:"小米iconfont",
+        type:"CSS",
+        aouthor:"wzx",
+        date:"2017/7/30",
+        dec:"iconfont图标练习",
+        img:"../小米iconfont/image/展示.jpg",
+        src:"../小米iconfont/dome.html"},
+
+        {title:"动态相册",
+        type:"JQ",
+        aouthor:"wzx",
+        date:"2017/8/11",
+        dec:"动态相册",
+        img:"../照片墙2/img/截图.jpg",
+        src:"../照片墙2/dome.html"},]
+    </script>
+    <!-- 引入dome.js -->
+    <script type="text/javascript" src="js/dome.js"></script>
+</body>
+</html>

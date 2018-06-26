@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/**
+ * @authors wzx
+ * @email   1072351129@qq.com
+ * @date    2017-07-28 13:39:57
+ *
+ */
+
+
+body{font-size:12px; font-family:"微软雅黑"; color:#666; height: 100%; overflow: hidden; }
+html{height: 100%; }
+
+
+/*盒子 warp start*/
+#warp{height: 100%; position: relative; background:#023b3b url("../img/bg.png") no-repeat center; overflow: hidden; right: 0; perspective:800px;  /*景深*/ /*transition: right 1s;*/ }
+/*盒子 end warp*/
+
+/*main start*/
+#warp #main{position: absolute; top: 50%; left: 50%; width: 0; height: 0; transform-style: preserve-3d;/* 变换风格：3D */ transform:translateZ(-1500px) rotateX(0deg) rotateY(0deg) ; }
+#warp #main li{width: 120px; height: 160px; background: rgba(0,127,127,0.5); border: 1px solid rgba(127,255,255,0.25); box-shadow: 0 0 12px rgba(0,255,255,0.5); position: absolute; top: -80px; left: -60px; cursor:pointer; text-align: center; color: rgba(255,255,255,0.7); transition: 2s ease-in-out; }
+/*transform:translate(0px,0px); transform变换  translate变换里面的一种-位移 第一个值是水平偏移 第二个值是垂直偏移*/
+#warp #main li .type{font-size:55px; color:rgba(255,255,255,0.7); margin-top:10px; font-weight:bold; text-shadow:0 0 20px rgba(0,255,255,0.5); }
+#warp #main li h1{font-size: 16px; margin-top: 35px; }
+#warp #main li .date,#warp #main li .title{margin-top:10px; font-weight:bold; text-shadow:0 0 20px rgba(0,255,255,0.5); color:rgba(127,255,255,0.75); font-size:16px; text-shadow:0 0 5px rgba(0,255,255,0.5); }
+#warp #main li .index{position: absolute;; top: 5px; left: 5px; font-size: 14px; font-weight: bold; }
+#warp #main li:hover{box-shadow:0 0 12px rgba(0,255,255,0.75); border:1px solid rgba(127,255,255,0.75); }
+/*end main*/
+
+/*styleBtn start*/
+#warp #styleBtn{width: 290px; height: 40px; position: fixed; bottom: 15px; left: 15px; transform: scale(1.5); opacity: 0; transition: 1.5s; }
+#warp #styleBtn li{color: rgba(127,255,255,0.75); border: 1px solid rgba(127,255,255,0.75); box-shadow:0 0 12px rgba(0,255,255,0.5); padding:8px 12px; font-weight: bold; font-size: 12px; text-align: center; margin:0 5px; float: left; cursor:pointer; }
+#warp #styleBtn li:hover{background: rgba(0,255,255,0.5); }
+#warp #styleBtn li:active{color:#000; }
+/*end start*/
+
+/*show start*/
+#warp #show{width: 80%; height: 80%; position: absolute; top:10%; left: 10%; background: rgba(0,127,127,0.5); border: 1px solid rgba(127,255,255,0.25); box-shadow: 0 0 12px rgba(0,255,255,0.5); border-radius: 3px; display: none; transform: rotateY(0deg) scale(1.5); transition: transform 1s; }
+#warp #show>div{border: 1px solid rgba(127,255,255,0.25); box-shadow: 0 0 12px rgba(0,255,255,0.5); border-radius: 3px; background: rgba(0,0,0,0.5); }
+#warp #show .s_title{width: 40%; height: 60px; margin: 3% auto 5%; text-align: center; font-size:28px;font-weight: 700; line-height:60px; color:rgba(255,255,255,0.9); }
+#warp #show .s_img{width: 50%; height: 60%; margin-left:5%; float: left; }
+#warp #show .s_img img{
+    width: 100%;height: 100%;display: block;
+}
+#warp #show .s_dec{width: 29%; height: 37%; margin-right: 5%; float: right;padding: 2% 3%;color:rgba(255,255,255,0.9);font-size: 22px }
+#warp #show .s_date{width: 35%;height: 10%;float: right;margin-right: 5%;margin-top: 20px;color:rgba(255,255,255,0.9);font-size: 22px ;text-align: center;line-height: 60px;}
+/*end start*/
+
+/*iframe start*/
+#iframe{width: 100%;; height: 100%; position: absolute; top: 0; left: 100%; overflow: hidden; display: none; /*transition: left 1s;*/ }
+#iframe iframe{width: 100%; height: 100%;
+}
+#iframe .back{color: rgba(127,255,255,0.75); border: 1px solid rgba(127,255,255,0.75); box-shadow:0 0 12px rgba(0,255,255,0.5); background: rgba(0,0,0,0.5); padding:8px 12px; font-weight: bold; font-size: 12px; text-align: center; margin:0 5px; position: absolute; left: 15px; bottom: 15px; cursor:pointer; }
+#iframe .back:hover{background: rgba(0,255,255,0.5); }
+#iframe .back:active{color:#000; }
+/*end iframe*/

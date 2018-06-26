@@ -1,0 +1,153 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>翻页特效</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;background: url(img/bg.jpg);}
+            #warp{width: 570px;height: 420px;padding: 50px 70px;margin: 50px auto;border-radius:5px;box-shadow: 0 0 2px #000;border:1px solid #000;}
+            #warp #pic{width: 100%;height: 100%;border-radius:5px;box-shadow: 0 0 5px #000;position: relative;perspective: 800px}
+            #warp #pic ul{width: 100%;height: 100%;position: absolute;left: 0;top: 0;transform-style: preserve-3d;}
+            #warp #pic ul.down{z-index: 1}
+            #warp #pic ul.up{z-index: 2}
+
+            #warp #pic ul li{position: absolute;transform:translateX(0px)  translateY(0px) rotateX(0deg);opacity: 1;border:1px solid transparent;}
+            #warp #pic ul li.r_start{transform:translateX(0px) translateY(0px) rotateX(0deg);opacity:1;border:1px solid transparent;}
+            #warp #pic ul li.l_start{transform:translateX(-50px) translateY(-50px) rotateX(720deg);opacity:0;border:1px solid #000;}
+            #warp #pic ul li.move{transition:1.5s transform , 1.5s opacity;}
+
+
+            #warp #btn{width: 100%;height: 100%;position: relative;}
+            #warp #btn div{width: 40px;height: 69px;background: url(img/btn.png);position: absolute;top: -50%;margin-top: -35px;cursor: pointer;}
+            #warp #btn div.left{background-position: 0 0;left: -55px;}
+            #warp #btn div.right{background-position: -41px 0;right: -55px;}
+
+        </style>
+        <script type="text/javascript" src="../jquery/jquery-1.12.1.min.js"></script>
+    </head>
+<body>
+    <div id="warp">
+        <div id="pic">
+            <ul class="up"></ul>
+            <ul></ul>
+            <ul></ul>
+            <ul></ul>
+            <ul></ul>
+        </div>
+        <div id="btn">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            fn(10,7);
+            function fn(num_w,num_h){
+                var $picUl=$("#warp #pic ul");
+                var $btn=$("#warp #btn div");
+                // var num_w=10;
+                // var num_h=7;
+                var liWid=$picUl.width()/num_w,
+                    liHei=$picUl.height()/num_h;
+
+                $picUl.each(function(j){
+                    for(var i=0;i<num_w*num_h;i++){
+
+                        var index_X=i%num_w;
+                        var index_Y=Math.floor(i/num_w);
+                        $li=$("<li></li>");
+                        // $li.html(j);
+
+                        $li[0].x=index_X;
+                        $li[0].y=index_Y;
+
+                        $li.css({
+                            width:liWid-2+"px",
+                            height:liHei-2+"px",
+                            background:"url(img/"+(j+1)+".jpg)",
+                            backgroundPosition:(-index_X*liWid)+"px "+(-index_Y*liHei)+"px",
+                            left:(index_X*liWid)+"px",
+                            top:(index_Y*liHei)+"px"
+                        });
+                        $picUl.eq(j).append($li);
+                    }
+                });
+                var Next=true;
+                var nowIndex=0;
+                $btn.click(function(){
+                    if(Next){
+                        Next=false;
+                        var $picLi;
+                        var num,
+                            sum=num_w+num_h-2;
+                        var i=$(this).index();
+                        if(i){
+                            nowIndex++;
+                            nowIndex%=$picUl.length;
+                            $picUl.eq(nowIndex).addClass("down").siblings().removeClass("down");
+                            $picUl.eq(nowIndex-1).addClass("up").siblings().removeClass("up");
+                            $picLi=$picUl.eq(nowIndex-1).find("li");   //处理当前显示的ul里li
+
+                            num=sum;
+                            timer=setInterval(function(){
+                                $picLi.each(function(i){
+                                    if(this.x+this.y===num){
+                                        $(this).prop("class","l_start move");
+                                    }
+                                });
+                                num--;
+                                if(num<0){
+                                    clearInterval(timer);
+                                    setTimeout(function(){
+                                        $picUl.eq(nowIndex-1).removeClass("up");
+                                        $picLi.prop("class","r_start");
+                                        Next=true;
+                                    },1300);
+                                }
+
+                            },50);
+
+
+                        }else{
+                            nowIndex--;
+                            $picUl.eq(nowIndex).addClass("up").siblings().removeClass("up");
+                            $picUl.eq(nowIndex+1).addClass("down").siblings().removeClass("down");
+
+                            if(nowIndex<0)nowIndex=$picUl.length-1;
+
+                            $picLi=$picUl.eq(nowIndex).find("li"); //处理当前显示的ul里li
+                            $picLi.prop("class","l_start");
+
+                            num=0;
+                            timer=setInterval(function(){
+                                $picLi.each(function(i){
+                                    if(this.x+this.y===num){
+                                        $(this).prop("class","r_start move");
+                                    }
+                                });
+                                num++;
+                                if(num>sum){
+                                    clearInterval(timer);
+                                    setTimeout(function(){
+                                        Next=true;
+                                    },1300);
+                                }
+                            },50);
+                        }
+                    }
+                });
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+#slide {
+  width: 48px;
+  position: absolute;
+  right: -60px;
+  top: 0;
+}
+#slide .box {
+  position: fixed;
+}
+#slide .box ul {
+  width: 48px;
+  background: #f6f9fa;
+  border: 1px solid #e5e9ef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#slide .box li {
+  width: 48px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+}
+#slide .box .on,
+#slide .box .now {
+  background: #00a1d6;
+  color: #fff;
+  transition: color 0.3s,background 0.5s;
+}
+#slide #col {
+  background: #00a1d6;
+  z-index: 1;
+  position: absolute;
+  display: none;
+}
+#slide .s-line {
+  position: relative;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  height: 9px;
+  width: 30px;
+  margin: 0 auto;
+}
+#slide .back-top {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  height: 48px;
+  background-position: -648px -72px;
+  background-color: #f6f9fa;
+  border: 1px solid #e5e9ef;
+  overflow: hidden;
+  border-radius: 4px;
+  background-image: url(../img/icons.png);
+}
+#slide .back-top:hover {
+  background-color: #00a1d6;
+  background-position: -714px -72px;
+  border-color: #00a1d6;
+}

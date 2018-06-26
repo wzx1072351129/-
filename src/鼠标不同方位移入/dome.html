@@ -1,0 +1,146 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>显示特效</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;}
+            #warp{width: 1200px;height: 360px;margin: 150px auto;}
+            #warp #list{width: 100%;height: 100%;}
+            #warp #list li{width: 230px;height: 360px;float: left;margin-left:12px;position: relative;overflow: hidden;}
+            #warp #list li #img{width: 100%;height: 100%;}
+            #warp #list li #img img{display: block;}
+            #warp #list li #cover{width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: url(img/new-bg.png);display: none;}
+            #warp #list li #cover p{color: #fff;text-align: center;font-size: 14px;line-height: 24px;cursor: pointer;}
+            #warp #list li #cover p.p1{margin-top:160px;}
+        </style>
+        <script type="text/javascript" src="../jquery/jquery-1.12.1.min.js"></script>
+    </head>
+<body>
+    <div id="warp">
+        <ul id="list">
+            <li style="margin-left:0px;">
+                <div id="img">
+                    <img src="img/1.jpg" width="230" height="360" alt="">
+                </div>
+                <div id="cover">
+                    <p class="p1">春夏新品 上新无限</p>
+                    <p class="p2">点击进入</p>
+                </div>
+            </li>
+            <li>
+                <div id="img">
+                    <img src="img/2.jpg" width="230" height="360" alt="">
+                </div>
+                <div id="cover">
+                    <p class="p1">夏装新品发布 8折起</p>
+                    <p class="p2">点击进入</p>
+                </div>
+            </li>
+            <li>
+                <div id="img">
+                    <img src="img/3.jpg" width="230" height="360" alt="">
+                </div>
+                <div id="cover">
+                    <p class="p1">春装特惠 买二送一</p>
+                    <p class="p2">点击进入</p>
+                </div>
+            </li>
+            <li>
+                <div id="img">
+                    <img src="img/4.jpg" width="230" height="360" alt="">
+                </div>
+                <div id="cover">
+                    <p class="p1">春夏新品 低至158</p>
+                    <p class="p2">点击进入</p>
+                </div>
+            </li>
+            <li>
+                <div id="img">
+                    <img src="img/5.jpg" width="230" height="360" alt="">
+                </div>
+                <div id="cover">
+                    <p class="p1">美洲野牛旗舰店</p>
+                    <p class="p2">点击进入</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        /*
+            知识点:json 删除属性 delete json.attr
+        */
+        $(function(){
+            var $li=$("#warp #list li");
+            var $imgDiv=$("#warp #list li #img")
+            var $cover=$("#warp #list li #cover");
+            var liW=$li.width(),
+                liH=$li.height();
+            $li.hover(function(ev){
+                var This=$(this);
+                var move=X_Y(This,ev);
+                $(this).find("#cover").show().css(move).stop(true).animate({
+                            left:"0px",
+                            top:"0px"
+                        },200);
+            },function(ev){
+                var This=$(this);
+                var move=X_Y(This,ev);
+                if(!parseInt(move.left))delete move.left;
+                if(!parseInt(move.top))delete move.top;
+                 $(this).find("#cover").stop(true).animate(move,200);
+            });
+
+            function X_Y(obj,ev){
+                var top=obj.offset().top,
+                    left=obj.offset().left;
+
+                var bottom=top+liH,
+                    right=left+liW;
+
+                var x=ev.pageX,
+                    y=ev.pageY;
+
+                var mT=Math.abs(y- top),
+                    mB=Math.abs(y- bottom),
+                    mL=Math.abs(x- left),
+                    mR=Math.abs(x- right);
+
+                var KO=Math.min(mT,mB,mL,mR);
+
+                var tagerX,tagerY;
+                switch(KO){
+                    case mT:
+                        tagerX=0;
+                        tagerY=-1;
+                        break;
+                    case mB:
+                        tagerX=0;
+                        tagerY=1;
+                        break;
+                    case mL:
+                        tagerX=-1;
+                        tagerY=0;
+                        break;
+                    case mR:
+                        tagerX=1;
+                        tagerY=0;
+                        break;
+                }
+                return {left:liW*tagerX+"px",
+                        top:liH*tagerY+"px"};
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>拖拽相册</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;background: #000;}
+
+            #warp{width: 133px;height: 200px;position: absolute;top: 50%;left: 50%;margin-top: -200px;margin-left: -68px;perspective: 800px}
+            #warp #box{width: 100%;height: 100%;position: relative;transform-style:preserve-3d; transform: rotateX(-10deg);}
+            #warp #box img{width: 100%;height: 100%;position: absolute;left: 0;top: 0;border-radius: 5px;box-shadow: 0 0 5px #D961D5;transform: rotateY(0deg) translateZ(0px);-webkit-box-reflect:below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,0.5) 100%);overflow: hidden;}
+
+            #warp #box #div{
+                width:1200px;
+                height:1200px;
+                background:-webkit-radial-gradient(center center,600px 600px,rgba(244,23,234,0.2),rgba(0,0,0,0));
+                border-radius:100%;
+                position:absolute;
+                left:50%;
+                top:102%;
+                margin-left:-600px;
+                margin-top:-600px;
+                transform:rotateX(90deg);}
+        </style>
+        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+    </head>
+<body>
+    <div id="warp">
+        <div id="box">
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+            <img src="img/6.jpg" alt="">
+            <img src="img/7.jpg" alt="">
+            <img src="img/8.jpg" alt="">
+            <img src="img/9.jpg" alt="">
+            <img src="img/10.jpg" alt="">
+            <img src="img/11.jpg" alt="">
+            <div id="div"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            var oBox=document.getElementById("box");
+            var aImg=oBox.getElementsByTagName("img");
+            var num=aImg.length;
+            var Deg=360/num;
+            var timer=null;
+
+            for(var i=0;i<num;i++){
+                aImg[i].style.transform="rotateY("+Deg*i+"deg) translateZ(350px)";
+
+                //开场动画 添加transition属性
+                aImg[i].style.transition="transform 1s "+(num-1-i)*0.1+"s"
+            }
+
+
+
+            var lastX,lastY,nowX,nowY,minusX,minusY;
+            var rotY=0,
+                rotX=-10;
+
+            // 拖拽：三个事件-按下 移动 抬起
+            //按下
+            document.onmousedown=function(ev){
+                ev=ev||window.event;
+
+                //鼠标按下的时候，给前一点坐标赋值，为了避免第一次相减的时候出错
+                lastX=ev.clientX;
+                lastY=ev.clientY;
+
+                //移动
+                this.onmousemove=function(ev){
+                    ev=ev||window.event;
+
+                    clearInterval(timer);
+
+                    nowX=ev.clientX;// clientX 鼠标距离页面左边的距离
+                    nowY=ev.clientY;// clientY ………………………………顶部………………
+
+                    //当前坐标和前一点坐标差值
+                    minusX=nowX- lastX;
+                    minusY=nowY- lastY;
+
+                    //更新wrap的旋转角度，拖拽越快-> minus变化大 -> roY变化大 -> 旋转快
+                    rotY+=minusX*0.2;
+                    rotX-=minusY*0.1;
+
+                    oBox.style.transform="rotateX("+rotX+"deg) rotateY("+rotY+"deg)"
+
+                    //前一点的坐标
+                    lastX=nowX;
+                    lastY=nowY;
+                }
+                //抬起
+                this.onmouseup=function(){
+                    this.onmousemove=null;
+                    timer=setInterval(function(){
+                        minusX*=0.9;
+                        minusY*=0.9;
+
+                        rotY+=minusX*0.2;
+                        rotX-=minusY*0.1;
+
+                        //先转rotateX 后传rotateY
+                        oBox.style.transform="rotateX("+rotX+"deg) rotateY("+rotY+"deg)";
+                        if(Math.abs(minusX)<0.1&&Math.abs(minusY)<0.1){
+                            clearInterval(timer);
+                        }
+                    },13);
+                }
+                //阻止鼠标按下的默认事件 ,阻止文字被选中
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>

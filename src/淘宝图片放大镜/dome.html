@@ -1,0 +1,209 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>淘宝放大镜</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"微软雅黑";color:#666;}
+            /*warp*/
+            #warp{width: 400px;height: 500px;border: 1px solid #bbb;box-shadow: 0 0 10px #aaa ;margin: 100px 200px;}
+            /*pic start*/
+            #warp #pic{width: 400px;height: 400px;position: relative;}
+            #warp #pic .img{position: absolute;top: 0;left: 0;}
+            #warp #pic #cover{width: 200px;height: 200px;position: absolute;top: 0;left: 0;background: url(img/cover.png);display: none;cursor: move;}
+            #warp #pic #show{width: 400px;height: 400px;position: absolute;top: 0;left: 410px;background: url(img1/1.jpg) no-repeat;display: none;}
+            /*end pic*/
+
+            /*tab start*/
+            #warp #tab{width: 100%;height: 54px;margin-top: 20px;}
+            #warp #tab ul{width: 100%;height: 54px;}
+            #warp #tab ul li{width: 50px;height: 50px;float: left;border: 2px solid #fff;/*margin: 0 13px;*/cursor: pointer;position: relative;}
+            #warp #tab ul li img{display: none;position: absolute;top: 0;left: 0;}
+            #warp #tab ul li.on{border: 2px solid #f40;}
+            /*end tab*/
+        </style>
+        <script type="text/javascript" src="../jquery/jquery-1.12.1.min.js"></script>
+    </head>
+<body>
+    <div id="warp">
+        <!-- pic start -->
+        <div id="pic">
+            <img class="img" src="img1/1.jpg" width="400" height="400" alt="">
+            <div id="cover"></div>
+            <div id="show"></div>
+        </div>
+        <!-- end pic -->
+
+        <!-- tab start -->
+        <div id="tab">
+            <ul>
+                <li><img src="img1/1.jpg" alt=""></li>
+                <li><img src="img1/2.jpg" alt=""></li>
+                <li><img src="img1/3.jpg" alt=""></li>
+                <li><img src="img1/4.jpg" alt=""></li>
+                <li><img src="img1/5.jpg" alt=""></li>
+            </ul>
+        </div>
+        <!-- end tab -->
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            var $tabImg=$("#warp #tab ul li img");  //li里的img
+            var $tabLi =$("#warp #tab ul li");      //li
+            var $picImg=$("#warp #pic .img");       //显示的大img
+            var $pic=$("#warp #pic");
+            var $cover=$("#warp #pic #cover")
+            var $show=$("#warp #pic #show");
+
+            var sizeArr=[];     //数据存储
+            var index=0;
+
+            var imgX=$picImg.offset().left;
+            var imgY=$picImg.offset().top;
+            // alert(imgX);
+
+
+            //图片切换,放大镜效果
+            (function(){
+                var coverWid,coverHei,
+                    lMin,lMax,tMin,tMax;
+
+                //show放大镜 与 pic大img 宽比
+                var ratioS_P;
+                $pic.hover(function(){
+
+                    //获取pic img宽高
+                    var picImgW=$picImg.prop("width");
+                    var picImgH=$picImg.prop("height");
+
+                    //当前pic中图片的真实 宽
+                    var tureW=sizeArr[index].imgW;
+
+                    ratioS_P=tureW/picImgW
+                    //根据比例计算cover的大小  x/400=400/trueW
+                    coverWid=picImgW*$show.width()/tureW;
+                    coverHei=coverWid;
+                    $cover.width(coverWid);
+                    $cover.height(coverHei);
+
+                    //让放大镜只能在图片上拖拽
+                    //计算最大 最小范围
+                    lMin=parseInt($picImg.css("left"));
+                    lMax=lMin+picImgW-coverWid;
+
+                    tMin=parseInt($picImg.css("top"));
+                    tMax=tMin+picImgH-coverHei;
+
+                    $cover.show();
+                    $show.show();
+                },function(){
+                    $cover.hide();
+                    $show.hide()
+                }).mousemove(function(ev){
+                    //cover的left top
+                    var y=ev.pageY-imgY-coverWid/2;
+                    var x=ev.pageX-imgX-coverHei/2;
+                    x=Math.max(x,lMin);
+                    x=Math.min(x,lMax);
+                    y=Math.max(y,tMin);
+                    y=Math.min(y,tMax);
+                    $cover.css({
+                        top:y+"px",
+                        left:x+"px"
+                    });
+                    //show位移计算  (x-lMin)/picImgW= X(所求) /trueW(真实宽)
+                    $show.css({
+                        backgroundPosition:(-(x-lMin)*ratioS_P)+"px "+(-(y-tMin)*ratioS_P)+"px"
+                    });
+                });
+
+            })();
+
+            //问题:鼠标移动过快会移动到show上 解决:让自己隐藏
+            $show.mousemove(function(){
+                $cover.hide();
+                $(this).hide()
+            });
+
+            //更改pic显示的img,获取全局index
+            $tabLi.mouseenter(function(){
+                var index=$(this).index();
+                $(this).addClass("on").siblings().removeClass("on");
+                var src=$(this).find("img").prop("src");
+                //根据不同尺寸图片,更改大小,定位
+                $picImg.prop({
+                    src:src,
+                    width:sizeArr[index].width*400,
+                    height:sizeArr[index].height*400
+                }).css({
+                    top:400*(1-sizeArr[index].height)/2,
+                    left:400*(1-sizeArr[index].width)/2
+                });
+                //更改pic显示的img
+                $show.css({
+                    background:"url("+src+") no-repeat"
+                });
+            });
+
+            //init
+            (function(){
+                //根据li img数量的不同 自适应margin
+                var ulW=$tabLi.parent().width();
+                var liNum=$tabLi.length;
+                var liWid=$tabLi.outerWidth();
+                var margin="0 "+(ulW/liNum-liWid)/2+"px"
+                $tabLi.css({
+                    margin:margin
+                });
+
+                //遍历每一个图片,修改,储存尺寸
+                $tabImg.each(function(i){
+                    var imgWid=$(this).prop("width");
+                    var imgHei=$(this).prop("height");
+                    var W,H;
+                    if(imgWid>imgHei){
+                        $(this).prop({
+                            width:50,
+                            height:50/imgWid*imgHei
+                        }).css({
+                            top:(50-50/imgWid*imgHei)/2,
+                            left:0
+                        });
+                        W=1;
+                        H=1/imgWid*imgHei
+
+                    }else{
+                        $(this).prop({
+                            width:50/imgHei*imgWid,
+                            height:50
+                        }).css({
+                            top:0,
+                            left:(50-50/imgHei*imgWid)/2
+                        });
+                        W=1/imgHei*imgWid;
+                        H=1;
+                    }
+                    sizeArr[i]={
+                            //储存图片的宽高比例
+                            width:W,
+                            height:H,
+                            imgW:imgWid,
+                            imgH:imgHei};
+                    $(this).show();
+                });
+
+            })();
+        })
+    </script>
+</body>
+</html>

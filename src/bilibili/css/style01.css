@@ -1,0 +1,76 @@
+@charset 'UTF-8';
+/**
+ *
+ * @authors wang hao ran (107235119@qq.com)
+ * @date    2018-02-20 16:54:48
+ * @version 1.01
+ */
+.clearfix:after
+{
+    display: table;
+    clear: both;
+
+    content: '';
+}
+.fl
+{
+    display: inline-block;
+    float: left;
+}
+.fr
+{
+    display: inline-block;
+    float: right;
+}
+
+.animation-slide-up
+{
+    display: block;
+
+    animation: slide-up .35s linear;
+}
+
+.animation-slide-down
+{
+    display: block;
+
+    animation: slide-down .35s linear;
+
+}
+@keyframes slide-up
+{
+    0%
+    {
+        transform: translateY(5px);
+
+        opacity: 0;
+    }
+    50%
+    {
+        transform: translateY(2px);
+
+        opacity: .8;
+    }
+    100%
+    {
+        transform: translateY(0px);
+
+        opacity: 1;
+    }
+}
+@keyframes slide-down
+{
+    0%
+    {
+        transform: translateY(0px);
+
+        opacity: 1;
+    }
+
+    100%
+    {
+        transform: translateY(6px);
+
+        opacity: 0;
+    }
+}

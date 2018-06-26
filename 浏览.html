@@ -1,0 +1,214 @@
+<!doctype html><!--声明当前文档的类型-->
+<html lang="en">
+    <head>
+        <!--中文编码 GBK GB2312  国际编码UTF-8-->
+        <meta http-equiv ="content-type" content="texe/html" charset="UTF-8">
+        <!--声明当前页面的三要素-->
+        <meta name="Keywords" content="关键字，关键词">
+        <meta name="Description" content="描述和简介">
+        <title>个人作品</title>
+        <style type="text/css">
+            /* web自带样式初始化 */
+            *{margin:0px;padding:0px;}
+            ol,ul{list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+
+            body{font-size:12px;font-family:"Microsoft YaHei","微软雅黑",sans-serif;color:#666;background-color:#f5f5f5; }
+           /* html,body{
+                width: 100%;
+            }*/
+            #head{
+                height: 60px;
+                line-height: 60px;
+                font-size:24px;
+                color:#000;
+                width: 100%;
+                text-align: center;
+                background:#fff;
+                border-bottom:2px solid #f0f0f0;
+                margin-bottom: 10px;
+            }
+            #warp{
+                width:1280px;
+                margin: 0 auto;
+                height: 500px;
+                /* background-color:#f0f; */
+            }
+
+            .B-module{
+                width: 100%;
+            }
+            .B-module .m-type{
+                height: 24px;
+                line-height: 24px;
+                border-left:5px solid #ff7e00;
+                padding-left: 10px;
+                font-size:16px;
+                margin:16px 0;
+            }
+            .B-module .m-con:after{
+                content:"";
+                display: block;
+                clear: both;
+                height: 0;
+            }
+            .B-module .m-con .m-item{
+                float: left;
+                width: 270px;
+                height: 220px;
+                padding: 15px;
+                background-color: #fff;
+                position: relative;
+                box-shadow:0 0  3px rgba(0,0,0,.1);
+                margin: 0 20px 45px 0;
+            }
+            .B-module .m-con .m-item .b-img{
+                width: 100%;
+                height: 180px;
+                position: relative;
+            }
+            .B-module .m-con .m-item .b-img:hover .cc{
+                 background-color:rgba(0,0,0,.3);
+            }
+            .B-module .m-con .m-item img{
+                width: 100%;
+                height: 180px;
+            }
+            .B-module .m-con .m-item .cc{
+                /*display: none;*/
+                 width: 100%;
+                height: 180px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background-color:rgba(0,0,0,.05);
+                transition: background-color .3s;
+            }
+            .B-module .m-con .m-item .m-msg{
+                display: block;
+                margin-top: 10px;
+                height: 26px;
+                line-height: 26px;
+                font-size:16px;
+                color:#000;
+            }
+
+            .B-module .m-con .m-item .cover{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
+
+        </style>
+    </head>
+<body>
+    <div id="head">个人作品</div>
+    <div id="warp">
+        <div class="B-module">
+            <h3 class="m-type">
+                项目案例
+            </h3>
+            <div class="m-con">
+                <div class="m-item">
+                    <div class="b-img">
+                        <a href="#" class="cc"></a>
+                        <img src="src/bilibili/截图.png" alt="">
+                    </div>
+                    <a class="m-msg">bilibili网站（仿）</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            // console.log(1);
+            var data=[ {
+                type : "项目案例",
+                list : [
+                    {title:"tmall官网(仿)",
+                    img:"src/tmall官网(仿)/image/展示.jpg",
+                    src:"src/tmall官网(仿)/dome.html"},
+
+                    {title:"哔哩哔哩(仿)",
+                    img:"src/bilibili/截图.png",
+                    src:"src/bilibili/index.html"}
+                ]
+            }, {
+                type : "JS 特效",
+                list : [
+                    {title:"图片立体旋转",
+                    img:"src/3D立方体图片旋转特效/截图.jpg",
+                    src:"src/3D立方体图片旋转特效/dome.html"},
+
+                    {title:"3D案例库",
+                    img:"src/案例库/img/截图.jpg",
+                    src:"src/案例库/dome_ok.html"},
+
+                    {title:"动态相册",
+                    img:"src/照片墙2/img/截图.jpg",
+                    src:"src/照片墙2/dome.html"},
+
+                    {title:"翻页特效",
+                    img:"src/css3旋转翻页特效/截图.jpg",
+                    src:"src/css3旋转翻页特效/dome.html"},
+
+                    {title:"拖拽相册",
+                    img:"src/拖拽相册/img/截图.jpg",
+                    src:"src/拖拽相册/dome.html"},
+
+                    {title:"显示特效",
+                    img:"src/鼠标不同方位移入/截图.jpg",
+                    src:"src/鼠标不同方位移入/dome.html"},
+
+                    {title:"淡入淡出轮播图",
+                    img:"src/京东淡入淡出/截图.jpg",
+                    src:"src/京东淡入淡出/dome.html"},
+
+                    {title:"全屏滚动",
+                    img:"src/全屏滚动/img/截图.jpg",
+                    src:"src/全屏滚动/dome.html"},
+
+                    {title:"淘宝放大镜",
+                    dec:"可根据图片不同尺寸自适应尺寸",
+                    img:"src/淘宝图片放大镜/img/截图.jpg",
+                    src:"src/淘宝图片放大镜/dome.html"},
+
+                    {title:"JS飞机大战",
+                    img:"src/JS飞机大战/img/截图.jpg",
+                    src:"src/JS飞机大战/dome.html"}
+                ]
+            } , {
+                type : "css",
+                list : [
+                    {title:"小米iconfont",
+                    img:"src/小米iconfont/image/展示.jpg",
+                    src:"src/小米iconfont/dome.html"},
+                ]
+            } ];
+            var oWarp=document.querySelector('#warp');
+            var htmlStr='';
+            for(var i=0;i<data.length;i++){
+                var dd=data[i].list;
+                htmlStr+='<div class="B-module">';
+                htmlStr+='    <h3 class="m-type">'+data[i].type+'</h3>';
+                htmlStr+='    <div class="m-con">';
+                for(var j=0;j<dd.length;j++){
+                    htmlStr+='        <div class="m-item">';
+                    htmlStr+='            <div class="b-img">';
+                    htmlStr+='                <a href="'+dd[j].src+'" class="cc" target="_blank"></a>';
+                    htmlStr+='                <img src="'+dd[j].img+'" alt="">';
+                    htmlStr+='            </div>';
+                    htmlStr+='            <a href="'+dd[j].src+'" class="m-msg" target="_blank">'+dd[j].title+'</a>';
+                    htmlStr+='        </div>';
+                }
+                htmlStr+='    </div>';
+                htmlStr+='</div>';
+            }
+            oWarp.innerHTML=htmlStr;
+        }
+    </script>
+</body>
+</html>
